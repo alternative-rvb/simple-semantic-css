@@ -34,9 +34,22 @@ h2,
 h3,
 h4,
 h5,
+h6,
+p {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
 h6 {
     font-family: var(--title-font);
-    font-weight: 900;
+}
+
+h1 {
+    font-size: 4rem;
 }
 
 img,
@@ -60,8 +73,9 @@ article {
     border-radius: 5px;
 }
 
-header, footer {
-    background-color: rgba(255, 255,255,0.1);
+header,
+footer {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 main {
