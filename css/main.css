@@ -3,8 +3,9 @@
 :root {
     scroll-behavior: smooth;
     font-size: 100%;
-    --primary: #fbc263;
-    --secondary: #ff97a0;
+    --theme1: #ff97a0;
+    --theme2: #fbc263;
+    --theme3: #bea5ff;
     --accent: hsl(219, 100%, 77%);
     --white: hsl(0, 0%, 100%);
     --dark: hsl(0, 0%, 11%);
@@ -38,12 +39,29 @@ h6 {
     font-weight: 900;
 }
 
-img {
+img,
+video {
     max-width: 100%;
+    border-radius: 5px;
 }
 
 main {
     padding: 1rem;
+    border: 2px solid var(--theme1);
+    border-radius: 5px;
+}
+
+section {
+    padding: 1rem;
+    border: 2px solid var(--theme2);
+    border-radius: 5px;
+
+}
+
+article {
+    padding: 1rem;
+    border: 2px solid var(--theme3);
+    border-radius: 5px;
 }
 
 ul {
@@ -130,7 +148,17 @@ a:hover {
 }
 
 /* !SECTION FLEX*/
+/*SECTION FLEX*/
+.d-grid {
+    display: grid;
+}
 
+.g-autofill {
+    grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 1fr));
+    grid-gap: 1rem;
+}
+
+/*!SECTION */
 /*ANCHOR ESPACEMENT*/
 
 .p-1 {
@@ -234,7 +262,7 @@ a:hover {
 }
 
 .bg-primary {
-    background-color: var(--primary);
+    background-color: var(--theme1);
 }
 
 .bg-secondary {
@@ -262,7 +290,7 @@ a:hover {
     /* margin: 1rem; */
     border-radius: 4px;
     border: 2px solid transparent;
-    background-color: var(--primary);
+    background-color: var(--theme1);
     color: var(--light);
     text-transform: uppercase;
     transition: border, background 500ms;
@@ -270,14 +298,14 @@ a:hover {
 
 .btn:hover {
     background-color: transparent;
-    border: 2px solid var(--primary);
-    color: var(--primary);
+    border: 2px solid var(--theme1);
+    color: var(--theme1);
 }
 
 .btn-light {
     background-color: var(--light);
     border: 2px solid transparent;
-    color: var(--secondary);
+    color: var(--theme2);
     transition: border, background 500ms;
 }
 
@@ -291,6 +319,11 @@ a:hover {
 
 .shadow {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.125);
+}
+
+.meta {
+    font-size: 0.85em;
+    color: var(--accent);
 }
 
 /* !SECTION */
@@ -310,19 +343,21 @@ a:hover {
     h6 {
         font-family: var(--title-font);
         font-weight: 900;
+        color: var(--light);
     }
 
     h1 {
-        color: var(--secondary);
+        color: var(--theme1);
     }
 
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    h2 {
 
-        color: var(--primary);
+        color: var(--theme2);
+    }
+
+    h3 {
+
+        color: var(--theme3);
     }
 }
 
