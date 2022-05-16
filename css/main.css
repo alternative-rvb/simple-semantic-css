@@ -6,6 +6,7 @@
     --theme1: #ff97a0;
     --theme2: #fbc263;
     --theme3: #bea5ff;
+    --theme4: #00d061;
     --accent: hsl(219, 100%, 77%);
     --white: hsl(0, 0%, 100%);
     --dark: hsl(0, 0%, 11%);
@@ -63,13 +64,15 @@ header,
 footer,
 main,
 section,
-article {
+article,
+aside {
     padding: 1rem;
 }
 
 main,
 section,
-article {
+article,
+aside {
     border: 2px solid transparent;
     border-radius: 5px;
 }
@@ -92,6 +95,10 @@ section {
 
 article {
     border-color: var(--theme3);
+
+}
+aside {
+    border-color: var(--theme4);
 
 }
 
