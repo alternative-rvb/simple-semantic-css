@@ -54,7 +54,7 @@ h1 {
 
 img,
 video {
-    width: 100%;
+    max-width: 100%;
     height: auto;
     border-radius: 5px;
 }
@@ -359,6 +359,11 @@ a:hover {
 .meta {
     font-size: 0.85em;
     color: var(--accent);
+}
+
+.meta img {
+    border-radius: 0;
+    height: 0.85em;
 }
 
 /* !SECTION */
