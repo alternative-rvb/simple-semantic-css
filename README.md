@@ -18,3 +18,6 @@ In stylesheet:
 /* Simple Semantic CSS CDN */
 @import 'https://cdn.jsdelivr.net/gh/alternative-rvb/Simple-Semantic-CSS/css/main.css';
 ```
+
+Add 'info' class to body tag to use info style
+
