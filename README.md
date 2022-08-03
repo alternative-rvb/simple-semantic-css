@@ -10,7 +10,7 @@ In html file:
 
 ```html
 <!-- Simple Semantic CSS CDN -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alternative-rvb/Simple-Semantic-CSS{version}/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alternative-rvb/Simple-Semantic-CSS/css{version}/main.css">
 ```
 In stylesheet:
 
