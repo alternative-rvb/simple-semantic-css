@@ -220,7 +220,7 @@ input[type="button"]:hover {
 }
 
 .info nav::before {
-    content: 'aside';
+    content: 'nav';
     color: var(--accent);
 }
 
