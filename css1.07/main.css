@@ -108,6 +108,7 @@ input[type="text"] {
     border: 2px solid rgba(0,0,0,0.4);
     background-color: rgba(0,0,0,0.4);
     border-radius: 4px;
+    color: var(--white);
 }
 
 /*ANCHOR INFOS */
