@@ -519,6 +519,16 @@ textarea {
 }
 
 /*ANCHOR __DESIGN*/
+
+.active {
+    color: var(--theme1);
+}
+
+.disabled {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
 .shadow {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.125);
 }
