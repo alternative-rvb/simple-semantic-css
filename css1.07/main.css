@@ -15,7 +15,6 @@
     --light: hsla(0, 0%, 100%, 0.75);
     --title-font: 'Raleway', sans-serif;
     --body-font: 'Oxygen', sans-serif;
-    ;
 }
 
 /* SECTION REBOOT */
@@ -48,6 +47,7 @@ h4,
 h5,
 h6 {
     font-family: var(--title-font);
+    color: var(--dark);
 }
 
 h1 {
@@ -73,7 +73,11 @@ a {
 
 a:hover {
     /* text-decoration: none; */
-    color: var(--accent);
+    color: var(--light);
+}
+
+nav a {
+    text-decoration: none;
 }
 
 button,
@@ -104,12 +108,26 @@ input[type="button"]:hover {
     color: var(--theme1);
 }
 
-input[type="text"] {
-    padding: 1rem;
-    border: 2px solid rgba(0,0,0,0.4);
-    background-color: rgba(0,0,0,0.4);
+textarea,
+input:not([type="checkbox"], [type="date"], [type="color"]) {
+    display: inline-block;
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     color: var(--white);
+    margin-bottom: 1rem;
+
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+textarea {
+    min-height: 200px;
 }
 
 /*ANCHOR INFOS */
@@ -273,6 +291,10 @@ input[type="text"] {
     gap: 1rem;
 }
 
+.g-1 {
+    gap: 1rem;
+}
+
 /*ANCHOR ALIGNMENT*/
 .jc-c {
     /*Axe primaire*/
@@ -300,8 +322,16 @@ input[type="text"] {
 }
 
 /* ANCHOR FLEX ITEMS */
+.f-s {
+    flex: 1 1 150px;
+}
+
 .f-m {
     flex: 1 1 300px;
+}
+
+.f-l {
+    flex: 1 1 600px;
 }
 
 /* !SECTION FLEX*/
@@ -316,7 +346,7 @@ input[type="text"] {
 }
 
 /*!SECTION */
-/*ANCHOR ESPACEMENT*/
+/*ANCHOR SPACING*/
 .p-0 {
     padding: 0;
 }
@@ -359,6 +389,10 @@ input[type="text"] {
     margin-right: auto;
 }
 
+.ml-auto {
+    margin-left: auto;
+}
+
 .m-1 {
     margin: 1rem;
 }
@@ -391,7 +425,7 @@ input[type="text"] {
     margin-top: 5rem;
 }
 
-/*ANCHOR DIMENSIONS*/
+/*ANCHOR SIZING*/
 .w-default {
     max-width: 1200px;
 }
@@ -432,6 +466,7 @@ input[type="text"] {
 .bg-light {
     background-color: var(--light);
 }
+
 .bg-darker {
     background-color: var(--darker);
 }
@@ -451,7 +486,7 @@ input[type="text"] {
 .btn {
     display: inline-block;
     text-decoration: none;
-    padding: 1rem;
+    padding: 0.5rem;
     /* margin: 1rem; */
     border-radius: 4px;
     border: 2px solid transparent;
@@ -486,6 +521,10 @@ input[type="text"] {
 /*ANCHOR __DESIGN*/
 .shadow {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.125);
+}
+
+.rounded {
+    border-radius: 5px;
 }
 
 .meta {
@@ -527,6 +566,15 @@ input[type="text"] {
 
     h3 {
         color: var(--theme3);
+    }
+
+    textarea,
+    input:not([type="checkbox"], [type="date"], [type="color"]) {
+
+        border: 2px solid rgba(0, 0, 0, 0.4);
+        background-color: rgba(0, 0, 0, 0.4);
+
+
     }
 }
 
