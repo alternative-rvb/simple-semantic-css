@@ -518,6 +518,12 @@ textarea {
     color: var(--light);
 }
 
+/*ANCHOR __POSITIONING*/
+
+.fixed {
+    position: fixed;
+}
+
 /*ANCHOR __DESIGN*/
 
 .active {
