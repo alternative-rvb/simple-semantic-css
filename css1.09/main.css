@@ -393,6 +393,14 @@ textarea {
     margin-left: auto;
 }
 
+.mr-auto {
+    margin-right: auto;
+}
+
+.mt-auto {
+    margin-top: auto;
+}
+
 .m-1 {
     margin: 1rem;
 }
