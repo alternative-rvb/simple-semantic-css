@@ -20,6 +20,10 @@ a:hover {
     color: var(--theme1);
 }
 
+footer {
+    margin-top: -14px;
+}
+
 .art-book {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.125);
     font-size: initial;
