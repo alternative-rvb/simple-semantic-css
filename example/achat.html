@@ -53,7 +53,23 @@
         </p>
       </section>
       <section class="d-flex fd-column g-1">
-        <h2>Section title</h2>
+        <div class="d-flex jc-sb  wrap g-1">
+          <h2>Section title</h2>
+          <div class="d-flex ai-c">
+            <form id="filter" class="d-flex ai-c g-1">
+              <label class="m-0" for="cat">Filtre:</label>
+              <input id="cat" list="age" style="margin:0;">
+              <datalist id="age">
+                <option value="" selected>--Please choose an option--</option>
+                <option value="0-3" data-url="#">0-3</option>
+                <option value="4-7" data-url="#">4-7</option>
+                <option value="8-14" data-url="#">8-14</option>
+                <option value="14-16" data-url="#">14-16</option>
+                <option value="17-20" data-url="#">17-20</option>
+              </datalist>
+            </form>
+          </div>
+        </div>
         <div class="d-grid g-autofill">
           <article class="art-book d-flex g-1 p-1 rounded">
             <div class="art-book__left">
@@ -82,7 +98,6 @@
               <div class="mt-auto text-r"><a href="#">Commander</a></div>
             </div>
           </article>
-
           <article class="art-book d-flex g-1 p-1 rounded">
             <div class="art-book__left">
               <img src="https://covers.openlibrary.org/b/id/1763-L.jpg" alt="Lorem Ipsum" loading="lazy" />
@@ -281,6 +296,8 @@
       </div>
     </footer>
   </div>
+
+  <script src="./js/filter.js"></script>
 </body>
 
 </html>
