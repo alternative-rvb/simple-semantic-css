@@ -13,8 +13,12 @@
     --dark: hsl(0, 0%, 11%);
     --darker: hsl(0, 0%, 5%);
     --light: hsla(0, 0%, 100%, 0.75);
+    --opacity-light: rgba(0, 0, 0, 0.125);
+    --opacity-dark: rgba(0, 0, 0, 0.8);
     --title-font: 'Raleway', sans-serif;
     --body-font: 'Oxygen', sans-serif;
+    --header-height: '';
+    --footer-height: '';
 }
 
 /* SECTION REBOOT */
@@ -55,7 +59,8 @@ h1 {
 }
 
 img,
-video {
+video,
+svg {
     display: inline-block;
     max-width: 100%;
     height: auto;
@@ -91,12 +96,12 @@ input[type="button"] {
     border-radius: 4px;
     border: 2px solid transparent;
     background-color: var(--theme1);
-    color: var(--dark);
+    color: var(--light);
     text-transform: uppercase;
     transition: border, background-color 300ms;
     font-weight: bold;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    --header-height: '';
+    --footer-height: '';
 }
 
 button:hover,
@@ -467,12 +472,12 @@ textarea {
     background-color: var(--light);
 }
 
-.bg-primary {
+.bg-theme1 {
     background-color: var(--theme1);
 }
 
-.bg-secondary {
-    background-color: var(--accent);
+.bg-theme2 {
+    background-color: var(--theme2);
 }
 
 .bg-light {
@@ -492,6 +497,14 @@ textarea {
     text-align: right;
 }
 
+.text-dark {
+    color: var(--dark);
+}
+
+.text-light {
+    color: var(--light);
+}
+
 /*ANCHOR __BUTTON*/
 
 
@@ -502,8 +515,8 @@ textarea {
     /* margin: 1rem; */
     border-radius: 4px;
     border: 2px solid transparent;
-    background-color: var(--theme1);
-    color: var(--dark);
+    background-color: var(--accent);
+    color: var(--light);
     text-transform: uppercase;
     transition: border, background-color 300ms;
     font-weight: bold;
@@ -513,8 +526,8 @@ textarea {
 
 .btn:hover {
     background-color: transparent;
-    border: 2px solid var(--theme1);
-    color: var(--theme1);
+    border: 2px solid var(--accent);
+    color: var(--accent);
 }
 
 .btn-light {
@@ -537,9 +550,24 @@ textarea {
 }
 
 /*ANCHOR __DESIGN*/
+header.fixed {
+    width: 100%;
+    box-shadow: var(--opacity-light);
+    /* height: var(--header-height); */
+}
+
+header.fixed+* {
+    margin-top: calc(var(--header-height, 100px) + 32px);
+}
+
+
+.svg-theme1 {
+    fill: var(--accent);
+}
+
 
 .active {
-    color: var(--theme1);
+    color: var(--accent);
 }
 
 .disabled {
@@ -602,8 +630,11 @@ textarea {
 
         border: 2px solid rgba(0, 0, 0, 0.4);
         background-color: rgba(0, 0, 0, 0.4);
+    }
 
-
+    header.fixed {
+        box-shadow: 0 0 15px var(--opacity-dark);
+        /* height: var(--header-height); */
     }
 }
 
