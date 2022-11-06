@@ -20,3 +20,5 @@ In stylesheet:
 ```
 
 Add 'info' class to body tag to use info style
+
+Example: `<body class="info" `
