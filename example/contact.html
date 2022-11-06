@@ -1,120 +1,118 @@
 <!DOCTYPE html>
 <html lang="zxx">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Simple Semantic CSS" />
-    <title>SIMPLE SEMANTIC CSS</title>
-    <!-- ANCHOR LOCAL stylesheet -->
-    <link rel="stylesheet" href="../css1.09/main.css" />
-    <link rel="stylesheet" href="./css/custom.css" />
-    <!-- ANCHOR CDN -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alternative-rvb/Simple-Semantic-CSS/css1.09/main.css"> -->
-    <!-- ANCHOR FONTAWSOME -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
 
-  <body>
-    <div class="d-flex fd-column g-1">
-      <header class="bg-darker">
-        <div class="mw-1320 m-auto">
-          <nav class="d-flex wrap g-1 p-1">
-            <div class="d-flex wrap ai-c g-1">
-              <a href="index.html">
-                <img src="./images/rtfm-logo-00.svg" alt="Logo" width="150" />
-              </a>
-              <a class="disabled" href="#">Évènements</a>
-              <a href="achat.html">Conseils de lecture</a>
-              <a class="disabled" href="#">La Librairie</a>
-              <a class="active" href="contact.html">Contact</a>
-            </div>
-            <div class="d-flex wrap ai-c g-1 ml-auto">
-              <a href="#">Inscription</a>
-              <a href="#">Connexion</a>
-              <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-            </div>
-          </nav>
-        </div>
-      </header>
-      <main class="mw-600 m-auto d-flex fd-column g-1 p-1">
-        <h1>Contactez-nous</h1>
-        <form action="#">
-          <label for="nom">Nom:</label>
-          <input id="nom" type="text" />
-          <label for="prenom">Prénom:</label>
-          <input id="prenom" type="text" />
-          <label for="tel">Téléphone:</label>
-          <input id="tel" type="tel" />
-          <label for="email">Email:</label>
-          <input id="email" type="email" />
-          <label for="sujet">Sujet:</label>
-          <input id="sujet" type="tel" />
-          <label for="message">Message:</label>
-          <textarea id="message"></textarea>
-          <div class="text-r">
-            <button type="submit">Envoyer</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Simple Semantic CSS" />
+  <title>SIMPLE SEMANTIC CSS</title>
+  <!-- ANCHOR LOCAL stylesheet -->
+  <link rel="stylesheet" href="../css1.09/main.css" />
+  <link rel="stylesheet" href="./css/custom.css" />
+  <!-- ANCHOR CDN -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alternative-rvb/Simple-Semantic-CSS/css1.09/main.css"> -->
+  <!-- ANCHOR FONTAWSOME -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="d-flex fd-column g-1">
+    <header class="bg-theme1 fixed">
+      <div class="mw-1320 m-auto">
+        <nav class="d-flex wrap g-1 p-1">
+          <div class="d-flex wrap ai-c g-1">
+            <a href="index.html">
+              <img src="./images/rtfm-logo-00.svg" alt="Logo" width="150" />
+            </a>
+            <a class="disabled" href="#">Évènements</a>
+            <a href="achat.html">Conseils de lecture</a>
+            <a class="disabled" href="#">La Librairie</a>
+            <a class="active" href="contact.html">Contact</a>
           </div>
-        </form>
-      </main>
-      <div class="bg-darker p-1">
-        <aside class="mw-1320 m-auto d-flex fd-column g-1">
-          <h2>FAQ:</h2>
-          <div class="d-flex wrap">
-            <div class="f-m p-1">
-              <h4>1. Aut perspiciatis eos</h4>
-              <ul>
-                <li>Enim facilis quo</li>
-                <li>Non qui libero</li>
-                <li>Sed voluptas aut</li>
-                <li>Ipsum corrupti eos</li>
-                <li>Officia recusandae non</li>
-              </ul>
-            </div>
-            <div class="f-m p-1">
-              <h4>2. Dolor enim pariatur</h4>
-              <ul>
-                <li>Nemo est voluptate</li>
-                <li>Nisi magnam sequi</li>
-                <li>Et sed maxime</li>
-                <li>Quibusdam similique mollitia</li>
-                <li>Et numquam placeat</li>
-              </ul>
-            </div>
-            <div class="f-m p-1">
-              <h4>3. Expedita impedit eum</h4>
-              <ul>
-                <li>Veritatis non repellat</li>
-                <li>Dolorum id praesentium</li>
-                <li>Ipsum provident omnis</li>
-                <li>Libero hic illum</li>
-                <li>Quis hic et</li>
-              </ul>
-            </div>
-            <div class="f-m p-1">
-              <h4>4. Aut modi dolor</h4>
-              <ul>
-                <li>Dolorem placeat officiis</li>
-                <li>Ullam enim ut</li>
-                <li>Magni rerum odio</li>
-                <li>Laborum id et</li>
-                <li>Nobis delectus pariatur</li>
-              </ul>
-            </div>
+          <div class="d-flex wrap ai-c g-1 ml-auto">
+            <a href="#">Inscription</a>
+            <a href="#">Connexion</a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
           </div>
-        </aside>
+        </nav>
       </div>
-      <footer class="p-1 bg-darker">
-        <div class="mw-1320 m-auto text-c">
-          <p><a href="../"><small>© 2022 Simple Semantic CSS</small></a></p>
+    </header>
+    <main class="mw-600 m-auto d-flex fd-column g-1 p-1">
+      <h1>Contactez-nous</h1>
+      <form action="#">
+        <label for="nom">Nom:</label>
+        <input id="nom" type="text" />
+        <label for="prenom">Prénom:</label>
+        <input id="prenom" type="text" />
+        <label for="tel">Téléphone:</label>
+        <input id="tel" type="tel" />
+        <label for="email">Email:</label>
+        <input id="email" type="email" />
+        <label for="sujet">Sujet:</label>
+        <input id="sujet" type="tel" />
+        <label for="message">Message:</label>
+        <textarea id="message"></textarea>
+        <div class="text-r">
+          <button type="submit">Envoyer</button>
         </div>
-      </footer>
-    </div>
-  </body>
+      </form>
+    </main>
+    <aside class=" bg-darker p-1 text-light">
+      <div class="mw-1320 m-auto d-flex fd-column g-1">
+        <h2 class="text-light">FAQ:</h2>
+        <div class="d-flex wrap">
+          <div class="f-m p-1">
+            <h4 class="text-light">1. Aut perspiciatis eos</h4>
+            <ul>
+              <li>Enim facilis quo</li>
+              <li>Non qui libero</li>
+              <li>Sed voluptas aut</li>
+              <li>Ipsum corrupti eos</li>
+              <li>Officia recusandae non</li>
+            </ul>
+          </div>
+          <div class="f-m p-1">
+            <h4 class="text-light">2. Dolor enim pariatur</h4>
+            <ul>
+              <li>Nemo est voluptate</li>
+              <li>Nisi magnam sequi</li>
+              <li>Et sed maxime</li>
+              <li>Quibusdam similique mollitia</li>
+              <li>Et numquam placeat</li>
+            </ul>
+          </div>
+          <div class="f-m p-1">
+            <h4 class="text-light">3. Expedita impedit eum</h4>
+            <ul>
+              <li>Veritatis non repellat</li>
+              <li>Dolorum id praesentium</li>
+              <li>Ipsum provident omnis</li>
+              <li>Libero hic illum</li>
+              <li>Quis hic et</li>
+            </ul>
+          </div>
+          <div class="f-m p-1">
+            <h4 class="text-light">4. Aut modi dolor</h4>
+            <ul>
+              <li>Dolorem placeat officiis</li>
+              <li>Ullam enim ut</li>
+              <li>Magni rerum odio</li>
+              <li>Laborum id et</li>
+              <li>Nobis delectus pariatur</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <footer class="p-1 bg-darker">
+      <div class="mw-1320 m-auto text-c">
+        <p><a href="../"><small>© 2022 Simple Semantic CSS</small></a></p>
+      </div>
+    </footer>
+  </div>
+</body>
+
 </html>
