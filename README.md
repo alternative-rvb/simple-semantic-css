@@ -12,6 +12,7 @@ In html file:
 <!-- Simple Semantic CSS CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alternative-rvb/Simple-Semantic-CSS/css/{version}/main.css">
 ```
+
 In stylesheet:
 
 ```css
