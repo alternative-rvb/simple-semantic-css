@@ -7,7 +7,7 @@
     --theme2: #fbc263;
     --theme3: #bea5ff;
     --theme4: #00d061;
-    --accent: #e20613;
+    --accent: #cc66ff;
     --white: hsl(0, 0%, 100%);
     --black: hsl(0, 0%, 0%);
     --dark: hsl(0, 0%, 11%);
@@ -103,7 +103,15 @@ footer {
         font-weight: 900;
         color: var(--light);
     }
-
+    button:hover,
+    input[type="submit"]:hover,
+    input[type="reset"]:hover,
+    input[type="button"]:hover {
+        background-color: transparent;
+        border: 2px solid var(--light);
+        color: var(--light);
+    }
+    
     .art-book {
         box-shadow: 0 0 15px var(--opacity-light);
         font-size: initial;
