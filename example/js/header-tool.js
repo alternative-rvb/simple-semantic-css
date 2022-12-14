@@ -1,5 +1,5 @@
 console.log("script header-tool.js loaded");
-export const active =  (nav) => {
+export const active = (nav) => {
   if (nav) {
     const current = window.location.href;
     // console.log("current => ", current);
@@ -25,9 +25,9 @@ export const fx = (elmt) => {
     //   info.innerHTML = "Scroll position";
     const position = window.pageYOffset;
     if (position > 16) {
-      elmt.classList.add("bg-theme1")
+      console.log(true);
     } else {
-      elmt.classList.remove("bg-theme1")
+      console.log(false);
     }
     //   info.innerHTML = window.pageYOffset;
     //   const boxInfo = document.querySelector(".info");
