@@ -1,5 +1,5 @@
+console.log("script filter loaded");
 export const regionFilter = () => {
-  console.log("script filter loaded");
   // FILTRER LES DEPARTEMENTS
   const cat = document.querySelector("#cat");
   const age = document.querySelector("#age");

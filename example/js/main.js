@@ -1,9 +1,20 @@
 import {includeElmt} from "./include.js";
 import {regionFilter} from "./filter.js";
+import {active, fx} from "./header-tool.js";
 console.log("script main loaded");
 
-includeElmt("./components/header.html", document.getElementById("mainHeader"));
-includeElmt("./components/footer.html", document.getElementById("mainFooter"));
+const mainHeader = document.querySelector("#mainHeader");
+const mainFooter = document.querySelector("#mainFooter");
+
+includeElmt("./components/header.html").then((data) => {
+  mainHeader.innerHTML = data;
+  active(mainHeader);
+  fx(mainHeader);
+});
+
+includeElmt("./components/footer.html").then((data) => {
+  mainFooter.innerHTML = data;
+});
 
 regionFilter();
 
