@@ -96,7 +96,7 @@ input[type="button"] {
     border-radius: 4px;
     border: 2px solid transparent;
     background-color: var(--theme1);
-    color: var(--light);
+    color: var(--dark);
     text-transform: uppercase;
     transition: border, background-color 300ms;
     font-weight: bold;
