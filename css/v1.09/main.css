@@ -17,8 +17,10 @@
     --opacity-dark: rgba(0, 0, 0, 0.8);
     --title-font: 'Raleway', sans-serif;
     --body-font: 'Oxygen', sans-serif;
-    --header-height: '';
-    --footer-height: '';
+    --header-height: "";
+    --footer-height: "";
+    --main-height: 54vh;
+    /* --main-height: calc(100vh - var(--header-height, 60vh) - var(--footer-height, 0)); */
 }
 
 /* SECTION REBOOT */
@@ -83,6 +85,10 @@ a:hover {
 
 nav a {
     text-decoration: none;
+}
+
+main {
+    min-height: var(--main-height);
 }
 
 button,

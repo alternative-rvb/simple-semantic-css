@@ -3,8 +3,13 @@ import {regionFilter} from "./filter.js";
 import {active, fx} from "./header-tool.js";
 console.log("script main loaded");
 
+const head = document.querySelector("head")
 const mainHeader = document.querySelector("#mainHeader");
 const mainFooter = document.querySelector("#mainFooter");
+
+includeElmt("./components/head.html").then((data) => {
+  head.innerHTML += data;
+});
 
 includeElmt("./components/header.html").then((data) => {
   mainHeader.innerHTML = data;
