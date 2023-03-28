@@ -114,7 +114,7 @@ footer {
     
     .art-book {
         box-shadow: 0 0 15px var(--opacity-light);
-        font-size: initial;
+        font-size: 14px;
         background-color: var(--darker);
     }
 
