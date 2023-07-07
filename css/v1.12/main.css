@@ -247,7 +247,6 @@ input[type="radio"] {
 }
 input[type="radio"] + label {
   display: inline-block;
-  margin-right: 1rem;
   cursor: pointer;
 }
 
