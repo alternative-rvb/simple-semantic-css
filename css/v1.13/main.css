@@ -674,7 +674,6 @@ input[type="radio"]:disabled {
   border: 2px solid transparent;
   background-color: var(--accent);
   color: var(--light);
-  text-transform: uppercase;
   transition: border, background-color 300ms;
   font-weight: bold;
   margin-top: 0.5rem;
