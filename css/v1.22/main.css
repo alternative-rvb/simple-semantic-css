@@ -163,7 +163,7 @@ input:not(
 }
 
 /* Styles pour les éléments de formulaire */
- input[type="number"],
+
 input[type="checkbox"],
 select {
   display: inline-block;
