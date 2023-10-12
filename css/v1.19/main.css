@@ -216,7 +216,7 @@ select {
 }
 
 /* Styles pour les états survolés */
-input[type="number"]:hover,
+
 input[type="checkbox"]:hover,
 select:hover {
   background-color: var(--light);
