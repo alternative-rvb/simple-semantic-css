@@ -163,7 +163,7 @@ input:not(
 }
 
 /* Styles pour les éléments de formulaire */
-/* input[type="number"],
+ input[type="number"],
 input[type="checkbox"],
 select {
   display: inline-block;
@@ -182,7 +182,7 @@ select:focus {
   outline: none;
   border-color: var(--theme2);
 }
-
+/*
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   appearance: none;
