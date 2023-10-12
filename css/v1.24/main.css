@@ -183,7 +183,7 @@ input[type="checkbox"] {
   position: relative;
   top: -1px;
   margin-right: 0.5rem;
-  border: 2px solid var(--light);
+  border: 2px solid var(--darker);
   background-color: var(--white);
   transition: background-color 300ms;
 }
@@ -202,8 +202,6 @@ select {
 }
 
 /* Styles pour les états survolés */
-
-input[type="checkbox"]:hover,
 select:hover {
   background-color: var(--light);
 }
