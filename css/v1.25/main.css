@@ -183,7 +183,7 @@ input[type="checkbox"] {
   position: relative;
   top: -1px;
   margin-right: 0.5rem;
-  border: 2px solid var(--darker);
+  border: 2px solid var(--theme1);
   background-color: var(--white);
   transition: background-color 300ms;
 }
