@@ -137,10 +137,6 @@ label {
   margin-bottom: 0.5rem;
 }
 
-textarea {
-  min-height: 200px;
-}
-
 textarea,
 select,
 input:not(
@@ -163,6 +159,9 @@ input:not(
 }
 
 /* Styles pour les éléments de formulaire */
+textarea {
+  min-height: 200px;
+}
 
 input[type="checkbox"],
 select {
@@ -176,8 +175,6 @@ select {
   transition: border-color 300ms, background-color 300ms;
 }
 
-
-
 input[type="checkbox"] {
   appearance: none;
   width: 1.25rem;
@@ -186,7 +183,7 @@ input[type="checkbox"] {
   position: relative;
   top: -1px;
   margin-right: 0.5rem;
-  border: 2px solid var(--theme1);
+  border: 2px solid var(--theme4);
   background-color: var(--white);
   transition: background-color 300ms;
 }
@@ -211,14 +208,6 @@ select:hover {
   background-color: var(--light);
 }
 
-/* Styles pour les états désactivés */
-input[type="number"]:disabled,
-input[type="checkbox"]:disabled,
-select:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 /* Styles pour les boutons radio */
 input[type="radio"] {
   appearance: none;
@@ -234,6 +223,7 @@ input[type="radio"] {
   background-color: var(--white);
   transition: background-color 300ms;
 }
+
 input[type="radio"] + label {
   display: inline-block;
   cursor: pointer;
@@ -248,6 +238,12 @@ input[type="radio"]:hover {
 }
 
 input[type="radio"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Styles pour les états désactivés */
+input:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
