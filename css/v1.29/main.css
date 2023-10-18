@@ -749,8 +749,8 @@ input:disabled {
 }
 
 .btn-ui {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background-color: transparent;
+  color: inherit;
   border-radius: 3px;
   border: none;
   font-size: 16px;
@@ -764,8 +764,7 @@ input:disabled {
 }
 
 .btn-ui:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: var(--theme1);
+  background-color: transparent;
 }
 /*ANCHOR __POSITIONING*/
 
