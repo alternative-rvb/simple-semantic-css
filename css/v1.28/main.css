@@ -748,6 +748,25 @@ input:disabled {
   color: var(--light);
 }
 
+.btn-ui {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 3px;
+  border: none;
+  font-size: 16px;
+  box-shadow: none;
+  width: 32px;
+  padding: 0;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.btn-ui:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--theme1);
+}
 /*ANCHOR __POSITIONING*/
 
 .fixed {
