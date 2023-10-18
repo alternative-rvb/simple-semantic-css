@@ -502,6 +502,63 @@ input:disabled {
 }
 
 /* ANCHOR FLEX ITEMS */
+
+.fs-0 {
+  flex-shrink: 0;
+}
+
+.fg-0 {
+  flex-grow: 1;
+}
+
+.fg-1 {
+  flex-grow: 1;
+}
+
+.fg-2 {
+  flex-grow: 2;
+}
+
+.fg-3 {
+  flex-grow: 3;
+}
+
+.fg-4 {
+  flex-grow: 4;
+}
+
+.fg-5 {
+  flex-grow: 5;
+}
+
+.fg-6 {
+  flex-grow: 6;
+}
+
+.fg-7 {
+  flex-grow: 7;
+}
+
+.fg-8 {
+  flex-grow: 8;
+}
+
+.fg-9 {
+  flex-grow: 9;
+}
+
+.fg-10 {
+  flex-grow: 10;
+}
+
+.fg-11 {
+  flex-grow: 11;
+}
+
+.fg-12 {
+  flex-grow: 12;
+}
+
 .f-s {
   flex: 1 1 150px;
 }
@@ -766,6 +823,7 @@ input:disabled {
 .btn-ui:hover {
   background-color: transparent;
 }
+
 /*ANCHOR __POSITIONING*/
 
 .fixed {
