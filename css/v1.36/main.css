@@ -976,7 +976,12 @@
       color: var(--light);
     }
 
-    .magic-color {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       background: -webkit-linear-gradient(45deg, var(--theme1), var(--theme2));
       background: linear-gradient(45deg, var(--theme1), var(--theme2));
       -webkit-background-clip: text;
