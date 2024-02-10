@@ -5,6 +5,7 @@
 Simple Semantic CSS is a lightweight, from-scratch CSS framework designed to empower web developers with semantic HTML5 integrations, dark and light mode support, and responsive design capabilities. By focusing on semantic HTML tags and offering utility classes for Flexbox properties, Simple Semantic CSS facilitates the creation of responsive, efficient, and semantically rich web pages.
 
 ## Table of Contents
+
 - [Features](#features)
 - [Getting Started](#getting-started)
   - [CDN Link](#cdn-link)
@@ -12,6 +13,7 @@ Simple Semantic CSS is a lightweight, from-scratch CSS framework designed to emp
   - [In HTML File](#in-html-file)
   - [In Stylesheet](#in-stylesheet)
 - [Assets](#assets)
+- [Author](#about-the-author)
 
 ## Features
 
@@ -63,3 +65,17 @@ Simple Semantic CSS incorporates the following resources:
 
 - **Google Fonts**: Uses Nunito font family from Google Fonts CDN.
 - **Bootstrap Icons**: Integrates Bootstrap Icons for enriched graphical elements.
+
+## About the Author
+
+**Nicolas Malet**
+
+I'm Nicolas Malet, the creator of Simple Semantic CSS. Passionate about web development, I focus on creating tools that empower developers to build more intuitive, efficient, and accessible web applications.
+
+- **GitHub**: [Alternative RVB](https://github.com/alternative-rvb)
+- **LinkedIn**: [Nicolas Malet](https://www.linkedin.com/in/nicolas-malet/)
+- **Website**: [www.alternative-rvb.com](http://www.alternative-rvb.com)
+- **Contact Me**: [alternative.rvb@gmail.com](mailto:alternative.rvb@gmail.com)
+
+I'm always interested in collaborating on projects, sharing knowledge, and contributing to the open-source community. Feel free to reach out if you have any questions, suggestions, or just want to connect!
+
