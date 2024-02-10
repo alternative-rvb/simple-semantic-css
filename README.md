@@ -1,8 +1,17 @@
 # Simple Semantic CSS
-g
+
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/alternative-rvb/Simple-Semantic-CSS?label=version) ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 Simple Semantic CSS is a lightweight, from-scratch CSS framework designed to empower web developers with semantic HTML5 integrations, dark and light mode support, and responsive design capabilities. By focusing on semantic HTML tags and offering utility classes for Flexbox properties, Simple Semantic CSS facilitates the creation of responsive, efficient, and semantically rich web pages.
+
+## Table of Contents
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [CDN Link](#cdn-link)
+- [Integration](#integration)
+  - [In HTML File](#in-html-file)
+  - [In Stylesheet](#in-stylesheet)
+- [Assets](#assets)
 
 ## Features
 
@@ -50,10 +59,7 @@ To activate information styles for semantic HTML tags, add `class="info"` to you
 
 ## Assets
 
-## Assets
-
 Simple Semantic CSS incorporates the following resources:
 
 - **Google Fonts**: Uses Nunito font family from Google Fonts CDN.
 - **Bootstrap Icons**: Integrates Bootstrap Icons for enriched graphical elements.
-
