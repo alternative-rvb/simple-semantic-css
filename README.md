@@ -4,6 +4,8 @@
 
 Simple Semantic CSS is a lightweight, from-scratch CSS framework designed to empower web developers with semantic HTML5 integrations, dark and light mode support, and responsive design capabilities. By focusing on semantic HTML tags and offering utility classes for Flexbox properties, Simple Semantic CSS facilitates the creation of responsive, efficient, and semantically rich web pages.
 
+![Demo]( /images/sscss.gif "Demo")
+
 ## Table of Contents
 
 - [Features](#features)
@@ -58,6 +60,8 @@ To activate information styles for semantic HTML tags, add `class="info"` to you
 ```html
 <body class="info">
 ```
+
+[See example here](https://simple-semantic-css.vercel.app/info.html)
 
 ## Assets
 
