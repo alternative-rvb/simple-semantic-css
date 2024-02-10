@@ -7,19 +7,31 @@
     <meta name="description" content="Simple Semantic CSS" />
     <title>SIMPLE SEMANTIC CSS</title>
     <!-- ANCHOR LOCAL stylesheet -->
-    <link rel="stylesheet" href="./css/v1.35/main.css" />
+    <link rel="stylesheet" href="./css/v1.37/main.css" />
   </head>
 
   <body class="info">
     <div class="d-flex fd-column g-1">
       <header class="p-1">
         <div class="mw-1320 m-auto">
-          <nav class="d-flex wrap g-1">
-            <a href="#">LOGO</a>
-            <a href="example/">Example</a>
-            <a href="https://github.com/alternative-rvb/Simple-Semantic-CSS"
-              >GitHub repo</a
-            >
+          <nav class="d-flex wrap">
+            <div class="d-flex wrap g-1">
+              <a href="/">
+                <img src="./images/logo.svg" alt="Alternative RVB logo" width="150">
+              </a>
+              <a href="/">Home</a>
+              <a href="/info.html">Semantic</a>
+              <a href="signup.html">Form Example</a>
+            </div>
+            <div class="ml-auto">
+              <a
+                class="btn-magic"
+                href="https://github.com/alternative-rvb/Simple-Semantic-CSS"
+              >
+                <!-- Bootstrap icons github -->
+                <i class="bi bi-github"></i> GitHub repo
+              </a>
+            </div>
           </nav>
         </div>
       </header>
@@ -100,9 +112,7 @@
           <div>
             <!-- Majeur -->
             <input id="major" type="checkbox" name="major" value="major" />
-            <label for="major"
-              >You must be over 18 to register</label
-            >
+            <label for="major">You must be over 18 to register</label>
           </div>
           <!-- Type color -->
           <div>
@@ -127,12 +137,17 @@
           <!-- type url -->
           <div>
             <label for="url"></label>
-            <input id="url" type="url" name="url" placeholder="http://"/>
+            <input id="url" type="url" name="url" placeholder="http://" />
           </div>
           <!-- type search -->
           <div>
             <label for="search"></label>
-            <input id="search" type="search" name="search" placeholder="Search"/>
+            <input
+              id="search"
+              type="search"
+              name="search"
+              placeholder="Search"
+            />
           </div>
           <!-- type number -->
           <div>
@@ -145,7 +160,7 @@
             <textarea id="textarea" name="textarea"></textarea>
           </div>
           <div class="text-r">
-            <input type="submit" value="Register">
+            <input type="submit" value="Register" />
           </div>
           <div class="text-r py-1">
             <button>Send</button>
