@@ -11,24 +11,20 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          ref: main
+          ruby-version: 2.7
 
-      - name: Generate Changelog Content
-        id: generate_changelog
-        run: |
-          echo "::group::Generating Changelog"
-          CHANGELOG=$(git log $(git describe --tags --abbrev=0 HEAD~1)..HEAD --pretty=format:"* %s (%cn)")
-          echo "$CHANGELOG"
-          echo "::endgroup::"
-          echo "::set-output name=changelog::$CHANGELOG"
+      - name: Install Bundler
+        run: gem install bundler
 
-      - name: Create Draft Release
-        uses: actions/create-release@v1
+      - name: Install dependencies
+        run: bundle install --path vendor/bundle
+
+      - name: Generate Release Notes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}  # Optional, can be customized
-          body: ${{ steps.generate_changelog.outputs.changelog }}
-          draft: true  # Set to true for draft release
+        run: |
+          bundle exec release-drafter
