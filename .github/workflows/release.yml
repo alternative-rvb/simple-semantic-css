@@ -1,5 +1,4 @@
 # /.github/workflows/release.yml
-# /.github/workflows/release.yml
 name: Generate Release Notes and Create Draft Release
 
 on:
@@ -33,13 +32,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Draft Release
+        id: create_release
         uses: actions/create-release@v1
         with:
           tag_name: ${{ github.ref }}
-          name: ${{ github.ref }}
+          release_name: ${{ github.ref }} # Use release_name instead of name
           body: ${{ steps.release_notes.outputs.changelog }}
-          draft: false
+          draft: true # Set draft to true to create a draft release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Pass the token as an environment variable
-      
-
