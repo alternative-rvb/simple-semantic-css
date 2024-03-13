@@ -31,7 +31,7 @@ jobs:
           echo "::group::Generating Detailed Changelog"
           prev_tag=${{ steps.tags.outputs.previous_tag }}
           latest_tag=${{ steps.tags.outputs.latest_tag }}
-          CHANGELOG=$(git log --pretty=format:"* [%h](https://github.com/$owner/$repo/commit/%h) %s (%cn)" $prev_tag..$latest_tag)
+          CHANGELOG=$(git log --pretty=format:"* [%h](https://github.com/$owner/$repo/commit/%h) %s (%cn)" $previous_tag..$latest_tag)
           if [[ -z "$CHANGELOG" ]]; then
             CHANGELOG="No changes since latest tag."
           fi
