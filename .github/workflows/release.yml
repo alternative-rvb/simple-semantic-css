@@ -38,7 +38,7 @@ jobs:
           tag_name: ${{ github.ref }}
           name: ${{ github.ref }}
           body: ${{ steps.release_notes.outputs.changelog }}
-          draft: true
+          draft: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Pass the token as an environment variable
       
