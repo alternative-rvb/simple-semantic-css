@@ -3,7 +3,7 @@ name: Create Release
 on:
   push:
     tags:
-      - '*'
+      - "*"
 
 jobs:
   build:
@@ -11,12 +11,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
-      
+          node-version: "14"
+
       - name: Install dependencies
         run: npm install
 
@@ -25,6 +25,7 @@ jobs:
         with:
           config-name: .github/release-drafter.yml
           version: 5
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate Release Notes
         id: release_notes
@@ -33,7 +34,7 @@ jobs:
           config-name: .github/release-drafter.yml
           version: 5
           tag: ${{ github.ref }}
-          draft: true
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Release
         uses: actions/create-release@v1
