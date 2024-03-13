@@ -17,6 +17,8 @@ jobs:
         with:
           config-name: .github/release-drafter.yml
           version: 5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate Release Notes
         id: release_notes
@@ -25,6 +27,8 @@ jobs:
           config-name: .github/release-drafter.yml
           version: 5
           tag: ${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Display Release Notes
         run: echo "${{ steps.release_notes.outputs.changelog }}"
