@@ -32,6 +32,7 @@ jobs:
           echo "$CHANGELOG"
           echo "::endgroup::"
         shell: bash
+  
 
       - name: Create Draft Release
         uses: actions/create-release@v1
@@ -42,4 +43,5 @@ jobs:
           release_name: ${{ github.ref }}  # Optional, can be customized
           body: ${{ env.CHANGELOG }}
           draft: true  # Set to true for draft release
+
 
