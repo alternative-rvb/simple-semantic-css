@@ -37,6 +37,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: "Release Notes for <titre-du-projet>-${{ github.ref }}"
+          release_name: "Release Notes for ${{ github.ref }}"
           body: ${{ steps.generate_changelog.outputs.changelog }}
           draft: true
