@@ -10,6 +10,9 @@ on:
 jobs:
   generate-release-notes:
     runs-on: ubuntu-latest
+    env:
+      owner: ${{ github.repository_owner }}
+      repo: ${{ github.repository }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -36,9 +39,9 @@ jobs:
           echo "::group::Generating Detailed Changelog"
           prev_tag=${{ steps.prev_tag.outputs.prev_tag }}  # Optional: Use prev_tag if available
           if [[ $prev_tag ]]; then
-            CHANGELOG=$(git log --pretty=format:"* [%h](https://github.com/alternative-rvb/simple-semantic-css/commit/%h) %s (%cn)" $prev_tag..HEAD)
+            CHANGELOG=$(git log --pretty=format:"* [%h](https://github.com/$owner/$repo/commit/%h) %s (%cn)" $prev_tag..HEAD)
           else
-            CHANGELOG=$(git log --pretty=format:"* [%h](https://github.com/alternative-rvb/simple-semantic-css/commit/%h) %s (%cn)")
+            CHANGELOG=$(git log --pretty=format:"* [%h](https://github.com/$owner/$repo/commit/%h) %s (%cn)")
           fi
           echo "$CHANGELOG"
           echo "::endgroup::"
