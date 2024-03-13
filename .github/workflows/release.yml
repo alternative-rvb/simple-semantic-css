@@ -22,7 +22,7 @@ jobs:
         id: generate_changelog
         run: |
           echo "::group::Generating Changelog"
-          CHANGELOG=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"* %s (%cn)")
+          CHANGELOG=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"* %s%n%n%b" --no-merges)
           echo "$CHANGELOG"
           echo "::endgroup::"
           echo "::set-output name=changelog::$CHANGELOG"
