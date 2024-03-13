@@ -20,7 +20,7 @@ jobs:
         id: commit_info
         run: |
           echo "::group::Getting Commit Info"
-          git show --format=fuller -s > commit_info.txt
+          git show > commit_info.txt
           echo "::set-output name=commit_info::$(cat commit_info.txt)"
           echo "::endgroup::"
 
