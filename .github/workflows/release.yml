@@ -31,10 +31,8 @@ jobs:
             index.html
             info.html
             LICENSE.md
-            NOTES.md
             README.md
             signup.html
-            TODO.md
           body: ${{ github.event.head_commit.message }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
