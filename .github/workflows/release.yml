@@ -17,26 +17,24 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Get Latest Tag
-        id: latest_tag
+      - name: Get Latest and Previous Tags
+        id: tags
         run: |
-          git fetch --tags
-          latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
-          echo "::set-output name=latest_tag::$latest_tag"
-
-      - name: Get Previous Tag
-        id: previous_tag
-        run: |
+          latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
           previous_tag=$(git describe --tags $(git rev-list --tags=$latest_tag --max-count=2 | tail -n 1))
+          echo "::set-output name=latest_tag::$latest_tag"
           echo "::set-output name=previous_tag::$previous_tag"
 
       - name: Generate Detailed Changelog Content
         id: generate_changelog
         run: |
           echo "::group::Generating Detailed Changelog"
-          prev_tag=${{ steps.previous_tag.outputs.previous_tag }}
-          latest_tag=${{ steps.latest_tag.outputs.latest_tag }}
-          CHANGELOG=$(git log --pretty=format:"* [%h](https://github.com/$owner/$repo/commit/%h) %s (%cn)" $prev_tag..$latest_tag)
+          prev_tag=${{ steps.tags.outputs.previous_tag }}
+          latest_tag=${{ steps.tags.outputs.latest_tag }}
+          CHANGELOG=$(git log --pretty=format:"* [%h](https://github.com/$owner/$repo/commit/%h) %s (%cn)" ${{ steps.tags.outputs.previous_tag }}..$latest_tag)
+          if [[ -z "$CHANGELOG" ]]; then
+            CHANGELOG="No changes since latest tag."
+          fi
           echo "$CHANGELOG"
           echo "::endgroup::"
           echo "::set-output name=changelog::$CHANGELOG"
