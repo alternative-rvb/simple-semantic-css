@@ -1,4 +1,12 @@
 # /.github/release-drafter.yml
+# Configuration for release-drafter
+template: |
+  ## ## ## {{ version }} ({{ date }})
+  ### {{#each categories}}**{{ title }}**
+  {{#each issues}}* {{#if linked}} (#{{ number }}) {{/if}}{{ title }} (@{{ author }})
+  {{/each}}
+  {{/each}}
+
 exclude:
   labels: []
   authors: []
