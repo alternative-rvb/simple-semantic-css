@@ -28,15 +28,6 @@ jobs:
           echo "::group::Generating Changelog"
           echo "Previous Tag: ${{ steps.previous_tag.outputs.previous_tag }}"
           echo "Latest Tag: ${{ steps.latest_tag.outputs.tag }}"
-          git log ${previous_tag}..${latest_tag} --pretty=format:"* %s%n%n%b" --no-merges
-          echo "::endgroup::"
-
-      - name: Generate Changelog Content
-        id: generate_changelog
-        run: |
-          echo "::group::Generating Changelog"
-          echo "Previous Tag: ${{ steps.previous_tag.outputs.previous_tag }}"
-          echo "Latest Tag: ${{ steps.latest_tag.outputs.tag }}"
           git log --pretty="* %s%n%n%b" ${previous_tag}..${latest_tag} --no-merges
           echo "::endgroup::"
         
