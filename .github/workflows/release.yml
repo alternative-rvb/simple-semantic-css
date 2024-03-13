@@ -38,4 +38,4 @@ jobs:
             ## ${{ github.repository }}-${{ steps.latest_tag.outputs.tag }}
             
             ${{ steps.generate_changelog.outputs.changelog }}
-          draft: true  # Set to true for draft release
+          draft: true 
