@@ -1,214 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Simple Semantic CSS" />
-    <title>SIMPLE SEMANTIC CSS</title>
-    <!-- ANCHOR LOCAL stylesheet -->
-    <link rel="stylesheet" href="./css/v1.46/main.css" />
-    <link rel="icon" href="https://api.dicebear.com/5.x/identicon/svg?seed=simple-semantic-css" type="image/x-icon">
-  </head>
 
-  <body>
-    <div class="d-flex fd-column g-1">
-      <header class="p-1">
-        <div class="mw-1320 m-auto">
-          <nav class="d-flex wrap ai-c">
-            <div class="d-flex wrap g-1 ai-c">
-              <div class="d-flex g-1 ai-c">
-                <a href="/">
-                  <img
-                    src="./images/logo.svg"
-                    alt="Alternative RVB logo"
-                    width="150"
-                  />
-                </a>
-              </div>
-              <div class="d-flex g-1 ai-c">
-                <a href="/">Home</a>
-                <a href="/info.html">Semantic</a>
-                <a href="/signup.html">Form</a>
-              </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Simple Semantic CSS" />
+  <title>SIMPLE SEMANTIC CSS</title>
+
+  <link rel="icon" href="https://api.dicebear.com/5.x/identicon/svg?seed=simple-semantic-css" type="image/x-icon">
+  <!-- ANCHOR LOCAL stylesheet -->
+  <link rel="stylesheet" href="./css/v1.48/main.css" />
+  <!-- ANCHOR LOCAL script -->
+  <script defer src="./js/v1.00/topnav.js" defer></script>
+  <style>
+    /* ANCHOR LOCAL topnav stylesheet */
+    .menu--open {
+      right: 0;
+      min-height: 20vh;
+      min-width: 100vw;
+      background-color: var(--light);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 15px 15px rgba(0, 0, 0, 0.25);
+      z-index: 1;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="d-flex fd-column g-1">
+    <header class="p-1">
+      <div class="mw-1320 m-auto">
+        <nav class="d-flex wrap ai-c">
+          <div class="d-flex wrap g-1 ai-c">
+            <div class="d-flex g-1 ai-c">
+              <a href="/">
+                <img src="./images/logo.svg" alt="Alternative RVB logo" width="150" />
+              </a>
             </div>
-            <div class="ml-auto">
-              <a
-                class="btn-magic"
-                href="https://github.com/alternative-rvb/Simple-Semantic-CSS"
-              >
+            <div class="menu d-flex g-1 ai-c">
+              <a href="/">Home</a>
+              <a href="/info.html">Semantic</a>
+              <a href="/signup.html">Form</a>
+            </div>
+          </div>
+          <div class="d-flex ai-c ml-auto">
+            <div>
+              <a class="btn-magic" href="https://github.com/alternative-rvb/Simple-Semantic-CSS">
                 <!-- Bootstrap icons github -->
                 <i class="bi bi-github"></i> GitHub repo
               </a>
             </div>
-          </nav>
-        </div>
-      </header>
-      <main class="mw-1320 m-auto p-1">
-        <h1>Email Registration</h1>
-        <h2>Registration Form</h2>
-        <form method="get" action="#">
-          <div>
-            <label for="firstName"></label>
-            <input
-              id="firstName"
-              type="text"
-              placeholder="firstname"
-              name="firstName"
-            />
+            <div class="hamburger p-1">
+              <i class="bi bi-list"></i>
+            </div>
           </div>
-          <div>
-            <label for="lastName"></label>
-            <input
-              id="lastName"
-              type="text"
-              placeholder="lastname"
-              name="lastName"
-            />
-          </div>
-          <div>
-            <label for="email"></label>
-            <input id="email" type="email" placeholder="username@gmail.com" />
-          </div>
-          <div>
-            <label for="pass1"></label>
-            <input
-              id="pass1"
-              type="password"
-              placeholder="password"
-              name="pass1"
-            />
-          </div>
-          <div>
-            <label for="pass2"></label>
-            <input
-              id="pass2"
-              type="password"
-              placeholder="confirm password"
-              name="pass2"
-            />
-          </div>
-          <div>
-            <label for="contact"></label>
-            <input id="contact" type="tel" placeholder="contact" />
-          </div>
-          <div>
-            <!-- Select an interest -->
-            <label for="interests"></label>
-            <select id="interests" name="interests">
-              <option value="sport">Sport</option>
-              <option value="music">Music</option>
-              <option value="cinema">Cinema</option>
-            </select>
-          </div>
-          <div>
-            <!-- Male or Female -->
-            <input id="male" type="radio" name="gender" value="male" />
-            <label for="male">Male</label>
-            <input id="female" type="radio" name="gender" value="female" />
-            <label for="female">Female</label>
-          </div>
-          <div>
-            <!-- Birthdate -->
-            <label for="birthdate"></label>
-            <input id="birthdate" type="date" name="birthdate" />
-          </div>
-          <!-- type date -->
-          <div>
-            <label for="date"></label>
-            <input id="date" type="date" name="date" />
-          </div>
-          <div>
-            <!-- Majeur -->
-            <input id="major" type="checkbox" name="major" value="major" />
-            <label for="major">You must be over 18 to register</label>
-          </div>
-          <!-- Type color -->
-          <div>
-            <label for="color"></label>
-            <input id="color" type="color" name="color" />
-          </div>
-          <!-- type file -->
-          <div>
-            <label for="file"></label>
-            <input id="file" type="file" name="file" />
-          </div>
-          <!-- type range -->
-          <div>
-            <label for="range"></label>
-            <input id="range" type="range" name="range" />
-          </div>
-          <!-- type time -->
-          <div>
-            <label for="time"></label>
-            <input id="time" type="time" name="time" />
-          </div>
-          <!-- type url -->
-          <div>
-            <label for="url"></label>
-            <input id="url" type="url" name="url" placeholder="http://" />
-          </div>
-          <!-- type search -->
-          <div>
-            <label for="search"></label>
-            <input
-              id="search"
-              type="search"
-              name="search"
-              placeholder="Search"
-            />
-          </div>
-          <!-- type number -->
-          <div>
-            <label for="number"></label>
-            <input id="number" type="number" name="number" />
-          </div>
-          <!-- type textarea -->
-          <div>
-            <label for="textarea"></label>
-            <textarea id="textarea" name="textarea"></textarea>
-          </div>
-          <div class="text-r">
-            <input type="submit" value="Register" />
-          </div>
-          <div class="text-r py-1">
-            <button>Send</button>
-          </div>
-        </form>
-        <div>
-          <button class="btn-light">Cancel</button>
-        </div>
-      </main>
-      <div>
-        <aside class="mw-1320 m-auto d-flex fd-column g-1 text-c">
-          <h4>Certification:</h4>
-          <div class="d-flex jc-c g-1">
-            <p>
-              <a href="https://jigsaw.w3.org/css-validator/check/referer">
-                <img
-                  style="border: 0; width: 88px; height: 31px"
-                  src="https://jigsaw.w3.org/css-validator/images/vcss"
-                  alt="CSS Valide !"
-                />
-              </a>
-            </p>
-            <p>
-              <a href="https://jigsaw.w3.org/css-validator/check/referer">
-                <img
-                  style="border: 0; width: 88px; height: 31px"
-                  src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
-                  alt="CSS Valide !"
-                />
-              </a>
-            </p>
-          </div>
-        </aside>
+        </nav>
       </div>
-      <footer class="p-1">
-        <div class="mw-1320 m-auto text-c">
-          <p>© 2022 Simple Semantic CSS</p>
+    </header>
+    <main class="mw-1320 m-auto p-1">
+      <h1>Email Registration</h1>
+      <h2>Registration Form</h2>
+      <form method="get" action="#">
+        <div>
+          <label for="firstName"></label>
+          <input id="firstName" type="text" placeholder="firstname" name="firstName" />
         </div>
-      </footer>
+        <div>
+          <label for="lastName"></label>
+          <input id="lastName" type="text" placeholder="lastname" name="lastName" />
+        </div>
+        <div>
+          <label for="email"></label>
+          <input id="email" type="email" placeholder="username@gmail.com" />
+        </div>
+        <div>
+          <label for="pass1"></label>
+          <input id="pass1" type="password" placeholder="password" name="pass1" />
+        </div>
+        <div>
+          <label for="pass2"></label>
+          <input id="pass2" type="password" placeholder="confirm password" name="pass2" />
+        </div>
+        <div>
+          <label for="contact"></label>
+          <input id="contact" type="tel" placeholder="contact" />
+        </div>
+        <div>
+          <!-- Select an interest -->
+          <label for="interests"></label>
+          <select id="interests" name="interests">
+            <option value="sport">Sport</option>
+            <option value="music">Music</option>
+            <option value="cinema">Cinema</option>
+          </select>
+        </div>
+        <div>
+          <!-- Male or Female -->
+          <input id="male" type="radio" name="gender" value="male" />
+          <label for="male">Male</label>
+          <input id="female" type="radio" name="gender" value="female" />
+          <label for="female">Female</label>
+        </div>
+        <div>
+          <!-- Birthdate -->
+          <label for="birthdate"></label>
+          <input id="birthdate" type="date" name="birthdate" />
+        </div>
+        <!-- type date -->
+        <div>
+          <label for="date"></label>
+          <input id="date" type="date" name="date" />
+        </div>
+        <div>
+          <!-- Majeur -->
+          <input id="major" type="checkbox" name="major" value="major" />
+          <label for="major">You must be over 18 to register</label>
+        </div>
+        <!-- Type color -->
+        <div>
+          <label for="color"></label>
+          <input id="color" type="color" name="color" />
+        </div>
+        <!-- type file -->
+        <div>
+          <label for="file"></label>
+          <input id="file" type="file" name="file" />
+        </div>
+        <!-- type range -->
+        <div>
+          <label for="range"></label>
+          <input id="range" type="range" name="range" />
+        </div>
+        <!-- type time -->
+        <div>
+          <label for="time"></label>
+          <input id="time" type="time" name="time" />
+        </div>
+        <!-- type url -->
+        <div>
+          <label for="url"></label>
+          <input id="url" type="url" name="url" placeholder="http://" />
+        </div>
+        <!-- type search -->
+        <div>
+          <label for="search"></label>
+          <input id="search" type="search" name="search" placeholder="Search" />
+        </div>
+        <!-- type number -->
+        <div>
+          <label for="number"></label>
+          <input id="number" type="number" name="number" />
+        </div>
+        <!-- type textarea -->
+        <div>
+          <label for="textarea"></label>
+          <textarea id="textarea" name="textarea"></textarea>
+        </div>
+        <div class="text-r">
+          <input type="submit" value="Register" />
+        </div>
+        <div class="text-r py-1">
+          <button>Send</button>
+        </div>
+      </form>
+      <div>
+        <button class="btn-light">Cancel</button>
+      </div>
+    </main>
+    <div>
+      <aside class="mw-1320 m-auto d-flex fd-column g-1 text-c">
+        <h4>Certification:</h4>
+        <div class="d-flex jc-c g-1">
+          <p>
+            <a href="https://jigsaw.w3.org/css-validator/check/referer">
+              <img style="border: 0; width: 88px; height: 31px" src="https://jigsaw.w3.org/css-validator/images/vcss"
+                alt="CSS Valide !" />
+            </a>
+          </p>
+          <p>
+            <a href="https://jigsaw.w3.org/css-validator/check/referer">
+              <img style="border: 0; width: 88px; height: 31px"
+                src="https://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valide !" />
+            </a>
+          </p>
+        </div>
+      </aside>
     </div>
-  </body>
+    <footer class="p-1">
+      <div class="mw-1320 m-auto text-c">
+        <p>© 2022 Simple Semantic CSS</p>
+      </div>
+    </footer>
+  </div>
+</body>
+
 </html>

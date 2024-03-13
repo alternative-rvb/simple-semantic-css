@@ -1,148 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Simple Semantic CSS" />
-    <title>SIMPLE SEMANTIC CSS</title>
-    <!-- ANCHOR LOCAL stylesheet -->
-    <link rel="stylesheet" href="./css/v1.47/main.css" />
-    <link rel="icon" href="https://api.dicebear.com/5.x/identicon/svg?seed=simple-semantic-css" type="image/x-icon">
-  </head>
-  <body>
-    <div class="d-flex fd-column g-1">
-      <header class="p-1">
-        <div class="mw-1320 m-auto">
-          <nav class="d-flex wrap ai-c">
-            <div class="d-flex wrap g-1 ai-c">
-              <div class="d-flex g-1 ai-c">
-                <a href="/">
-                  <img
-                    src="./images/logo.svg"
-                    alt="Alternative RVB logo"
-                    width="150"
-                  />
-                </a>
-              </div>
-              <div class="d-flex g-1 ai-c">
-                <a href="/">Home</a>
-                <a href="/info.html">Semantic</a>
-                <a href="/signup.html">Form</a>
-              </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Simple Semantic CSS" />
+  <title>SIMPLE SEMANTIC CSS</title>
+  <link rel="icon" href="https://api.dicebear.com/5.x/identicon/svg?seed=simple-semantic-css" type="image/x-icon">
+  <!-- ANCHOR LOCAL stylesheet -->
+  <link rel="stylesheet" href="./css/v1.48/main.css" />
+  <!-- ANCHOR LOCAL script -->
+  <script defer src="./js/v1.00/topnav.js" defer></script>
+  <style>
+    /* ANCHOR LOCAL topnav stylesheet */
+    .menu--open {
+      right: 0;
+      min-height: 20vh;
+      min-width: 100vw;
+      background-color: var(--light);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 15px 15px rgba(0, 0, 0, 0.25);
+      z-index: 1;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="d-flex fd-column g-1">
+    <header class="p-1">
+      <div class="mw-1320 m-auto">
+        <nav class="d-flex wrap ai-c">
+          <div class="d-flex wrap g-1 ai-c">
+            <div class="d-flex g-1 ai-c">
+              <a href="/">
+                <img src="./images/logo.svg" alt="Alternative RVB logo" width="150" />
+              </a>
             </div>
-            <div class="ml-auto">
-              <a
-                class="btn-magic"
-                href="https://github.com/alternative-rvb/Simple-Semantic-CSS"
-              >
+            <div class="menu d-flex g-1 ai-c">
+              <a href="/">Home</a>
+              <a href="/info.html">Semantic</a>
+              <a href="/signup.html">Form</a>
+            </div>
+          </div>
+          <div class="d-flex ai-c ml-auto">
+            <div>
+              <a class="btn-magic" href="https://github.com/alternative-rvb/Simple-Semantic-CSS">
                 <!-- Bootstrap icons github -->
                 <i class="bi bi-github"></i> GitHub repo
               </a>
             </div>
-          </nav>
-        </div>
-      </header>
-      <main class="mw-1320 m-auto d-flex fd-column g-1 p-1">
-        <section class="hero d-flex row-r wrap ai-c g-2 my-2">
-          <div class="f-m">
-            <img
-              src="./images/sscss.gif"
-              alt="Démo"
-              width="1920"
-              height="1080"
-              loading="lazy"
-              style="background-color: #F5F5F5;"
-            />
-          </div>
-          <div class="f-m d-flex fd-column g-1">
-            <h1>SIMPLE <span class="color-magic">SEMANTIC</span> CSS</h1>
-            <p class="exerpt">
-              Simple Semantic CSS is a lightweight, from-scratch CSS framework
-              designed to empower web developers with semantic HTML5
-              integrations, dark and light mode support, and responsive design
-              capabilities.
-            </p>
-            <div>
-              <a
-                class="btn"
-                href="https://github.com/alternative-rvb/Simple-Semantic-CSS"
-                >Get started</a
-              >
+            <div class="hamburger p-1">
+              <i class="bi bi-list"></i>
             </div>
           </div>
+        </nav>
+      </div>
+    </header>
+    <main class="mw-1320 m-auto d-flex fd-column g-1 p-1">
+      <section class="hero d-flex row-r wrap ai-c g-2 my-2">
+        <div class="f-m">
+          <img src="./images/sscss.gif" alt="Démo" width="1920" height="1080" loading="lazy"
+            style="background-color: #F5F5F5;" />
+        </div>
+        <div class="f-m d-flex fd-column g-1">
+          <h1>SIMPLE <span class="color-magic">SEMANTIC</span> CSS</h1>
+          <p class="exerpt">
+            Simple Semantic CSS is a lightweight, from-scratch CSS framework
+            designed to empower web developers with semantic HTML5
+            integrations, dark and light mode support, and responsive design
+            capabilities.
+          </p>
+          <div>
+            <a class="btn" href="https://github.com/alternative-rvb/Simple-Semantic-CSS">Get started</a>
+          </div>
+        </div>
+      </section>
+      <div class="my-2 py-2">
+        <section id="features" class="f-m">
+          <h2>Features</h2>
+          <ul>
+            <li>
+              <strong>Semantic HTML5 Integration</strong>: Enhances semantic
+              HTML tags with informative styles.
+            </li>
+            <li>
+              <strong>Dark and Light Mode</strong>: Natively supports dark and
+              light themes using `@media (prefers-color-scheme: dark/light)`.
+            </li>
+            <li>
+              <strong>Flexbox Utilities</strong>: Offers utility classes for
+              Flexbox, such as `.d-flex {display: flex;}`.
+            </li>
+            <li>
+              <strong>CSS Reboot</strong>: Applies a default style for most
+              HTML elements based on a dark theme.
+            </li>
+            <li>
+              <strong>Layered Architecture</strong>: Utilizes `@layer` to
+              organize and prioritize CSS rules.
+            </li>
+            <li>
+              <strong>Responsive Design</strong>: Makes it easy to build
+              responsive websites with minimal effort.
+            </li>
+          </ul>
         </section>
-        <div class="my-2 py-2">
-          <section id="features" class="f-m">
-            <h2>Features</h2>
-            <ul>
-              <li>
-                <strong>Semantic HTML5 Integration</strong>: Enhances semantic
-                HTML tags with informative styles.
-              </li>
-              <li>
-                <strong>Dark and Light Mode</strong>: Natively supports dark and
-                light themes using `@media (prefers-color-scheme: dark/light)`.
-              </li>
-              <li>
-                <strong>Flexbox Utilities</strong>: Offers utility classes for
-                Flexbox, such as `.d-flex {display: flex;}`.
-              </li>
-              <li>
-                <strong>CSS Reboot</strong>: Applies a default style for most
-                HTML elements based on a dark theme.
-              </li>
-              <li>
-                <strong>Layered Architecture</strong>: Utilizes `@layer` to
-                organize and prioritize CSS rules.
-              </li>
-              <li>
-                <strong>Responsive Design</strong>: Makes it easy to build
-                responsive websites with minimal effort.
-              </li>
-            </ul>
-          </section>
-          <section id="about" class="f-m">
-            <h2>About</h2>
-            <p>
-              Developed by
-              <a href="https://www.alternative-rvb.com">Alternative RVB</a>,
-              Simple Semantic CSS aims to simplify the development process by
-              offering a structured and efficient stylesheet architecture,
-              making it easy to build responsive websites with minimal effort.
-            </p>
-            <aside class="mw-1320 m-auto d-flex fd-column g-1">
-              <h4>Certification:</h4>
-              <div class="d-flex g-1">
-                <p>
-                  <a href="https://jigsaw.w3.org/css-validator/check/referer">
-                    <img
-                      style="border: 0; width: 88px; height: 31px"
-                      src="https://jigsaw.w3.org/css-validator/images/vcss"
-                      alt="CSS Valide !"
-                    />
-                  </a>
-                </p>
-                <p>
-                  <a href="https://jigsaw.w3.org/css-validator/check/referer">
-                    <img
-                      style="border: 0; width: 88px; height: 31px"
-                      src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
-                      alt="CSS Valide !"
-                    />
-                  </a>
-                </p>
-              </div>
-            </aside>
-          </section>
-        </div>
-      </main>
-      <div></div>
-      <footer class="p-1">
-        <div class="mw-1320 m-auto text-c">
-          <p>© 2022 Simple Semantic CSS</p>
-        </div>
-      </footer>
-    </div>
-  </body>
+        <section id="about" class="f-m">
+          <h2>About</h2>
+          <p>
+            Developed by
+            <a href="https://www.alternative-rvb.com">Alternative RVB</a>,
+            Simple Semantic CSS aims to simplify the development process by
+            offering a structured and efficient stylesheet architecture,
+            making it easy to build responsive websites with minimal effort.
+          </p>
+          <aside class="mw-1320 m-auto d-flex fd-column g-1">
+            <h4>Certification:</h4>
+            <div class="d-flex g-1">
+              <p>
+                <a href="https://jigsaw.w3.org/css-validator/check/referer">
+                  <img style="border: 0; width: 88px; height: 31px"
+                    src="https://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Valide !" />
+                </a>
+              </p>
+              <p>
+                <a href="https://jigsaw.w3.org/css-validator/check/referer">
+                  <img style="border: 0; width: 88px; height: 31px"
+                    src="https://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valide !" />
+                </a>
+              </p>
+            </div>
+          </aside>
+        </section>
+      </div>
+    </main>
+    <div></div>
+    <footer class="p-1">
+      <div class="mw-1320 m-auto text-c">
+        <p>© 2022 Simple Semantic CSS</p>
+      </div>
+    </footer>
+  </div>
+</body>
+
 </html>
