@@ -25,6 +25,7 @@ Simple Semantic CSS is a lightweight, from-scratch CSS framework designed to emp
 - **CSS Reboot**: Applies a default style for most HTML elements based on a dark theme, providing a consistent and modern look across all web pages.
 - **Layered Architecture**: Utilizes `@layer` to organize and prioritize CSS rules, ensuring a structured and efficient stylesheet.
 - **Responsive Design**: Makes it easy to build responsive websites with minimal effort, enhancing the mobile and desktop viewing experience.
+- **NEW** : Possibilité d'ajouter une menu responsive
 
 ## Getting Started
 
