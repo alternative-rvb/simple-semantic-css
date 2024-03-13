@@ -5,7 +5,7 @@ name: Generate Detailed Release Notes and Create Draft Release
 on:
   push:
     tags:
-      - '*'
+      - "*"
 
 jobs:
   generate-release-notes:
@@ -16,6 +16,10 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+
+      - name: Fetch Latest Changes
+        run: |
+          git fetch --depth=1 origin
 
       - name: Get Latest and Previous Tags
         id: tags
@@ -31,11 +35,13 @@ jobs:
           echo "::group::Generating Detailed Changelog"
           prev_tag=${{ steps.tags.outputs.previous_tag }}
           latest_tag=${{ steps.tags.outputs.latest_tag }}
-          CHANGELOG=$(git log --pretty=format:"* [%h](https://github.com/$owner/$repo/commit/%h) %s (%cn)" $previous_tag..$latest_tag)
+          echo "Previous Tag: $prev_tag"
+          echo "Latest Tag: $latest_tag"
+          CHANGELOG=$(git log --all --pretty=format:"* [%h](https://github.com/$owner/$repo/commit/%h) %s (%cn)" $prev_tag..$latest_tag)
           if [[ -z "$CHANGELOG" ]]; then
             CHANGELOG="No changes since latest tag."
           fi
-          echo "$CHANGELOG"
+          echo "Generated Changelog: $CHANGELOG"
           echo "::endgroup::"
           echo "::set-output name=changelog::$CHANGELOG"
 
@@ -45,7 +51,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: "**Release Notes for ${{ github.ref }}**"  # Clear release name
+          release_name: "**Release Notes for ${{ github.ref }}**" # Clear release name
           body: |
             **Detailed Changelog:**
 
