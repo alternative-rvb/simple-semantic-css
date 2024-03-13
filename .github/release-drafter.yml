@@ -1,4 +1,4 @@
-name: Create Release
+name: Create Release with Release Notes
 
 on:
   push:
@@ -18,17 +18,15 @@ jobs:
           node-version: "14"
 
       - name: Install dependencies
-        run: npm install
+        run: npm install  # Assuming you use npm for dependencies
 
-      - name: Install Release Drafter
-        uses: release-drafter/release-drafter@v5
+      - name: Install Release Drafter (if needed)
+        uses: release-drafter/release-drafter@v5  # Only if not pre-installed
         with:
           config-name: release-drafter.yml
           version: 5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate Release Notes
+      - name: Generate Release Notes (with logging)
         id: release_notes
         uses: release-drafter/release-drafter@v5
         with:
@@ -36,12 +34,17 @@ jobs:
           tag: ${{ github.ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Add logging (optional)
+        run: |
+          release_drafter ${{ runner.temp }}/release-drafter  # Capture output
+          echo "Generated changelog: ${{ steps.release_notes.outputs.changelog }}"
 
-      - name: Create Release
+      - name: Create Release (even with empty changelog - for testing)
         uses: actions/create-release@v1
-        if: steps.release_notes.outputs.changelog != ''
+        # Consider removing the condition for testing purposes only
+        # if: steps.release_notes.outputs.changelog != ''
         with:
           tag_name: ${{ github.ref }}
           release_name: ${{ github.ref }}
-          body: ${{ steps.release_notes.outputs.changelog }}
+          body: ${{ steps.release_notes.outputs.changelog || 'No significant changes in this release.' }}  # Default message for empty changelog
           token: ${{ secrets.GITHUB_TOKEN }}
