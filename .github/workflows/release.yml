@@ -2,8 +2,8 @@ name: Generate Release Notes and Create Draft Release
 
 on:
   push:
-    tags:
-      - "*"
+    branches:
+      - main
 
 jobs:
   generate-release-notes:
@@ -12,14 +12,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          ref: main
+          fetch-depth: 0  # Récupère tout l'historique du dépôt pour obtenir tous les commits
 
       - name: Generate Changelog Content
         id: generate_changelog
         run: |
           echo "::group::Generating Changelog"
-          LAST_TAG=$(git describe --tags --abbrev=0)
-          CHANGELOG=$(git log $LAST_TAG..HEAD --pretty=format:"* %s (%cn)")
+          CHANGELOG=$(git log --pretty=format:"* %s (%cn)")
           echo "$CHANGELOG"
           echo "::endgroup::"
           echo "::set-output name=changelog::$CHANGELOG"
@@ -29,7 +28,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}  # Optional, can be customized
+          tag_name: v1.0.0  # Remplacez avec la balise de version appropriée
+          release_name: Version 1.0.0  # Remplacez avec le nom de version approprié
           body: ${{ steps.generate_changelog.outputs.changelog }}
           draft: true  # Set to true for draft release
