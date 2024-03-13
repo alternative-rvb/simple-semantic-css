@@ -37,7 +37,7 @@ jobs:
         id: generate_changelog
         run: |
           echo "::group::Generating Detailed Changelog"
-          prev_tag=${{ steps.prev_tag.outputs.prev_tag }}  # Optional: Use prev_tag if available
+          prev_tag=  # Optional: Use prev_tag if available
           if [[ $prev_tag ]]; then
             CHANGELOG=$(git log --pretty=format:"* [%h](https://github.com/$owner/$repo/commit/%h) %s" $prev_tag..HEAD)
           else
@@ -45,7 +45,7 @@ jobs:
           fi
           echo "$CHANGELOG"
           echo "::endgroup::"
-          echo "::set-output name=changelog::$CHANGELOG"
+          echo "::set-output name=changelog::$CHANGELOG
       
 
       - name: Create Draft Release with Detailed Changelog
