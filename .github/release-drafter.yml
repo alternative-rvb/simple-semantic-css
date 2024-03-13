@@ -1,76 +1,23 @@
-name-template: 'Release {{ .ReleaseTag }}'
-template: |
-  ## Release {{ .Major }}.{{ .Minor }}.{{ .Patch }} {{ .PreRelease }} ({{ .TagName }})
-
-  {{#if .IsPatch }}
-  * This is a patch release.
-  {{else if .IsMinor }}
-  * This is a minor release with new features and improvements.
-  {{else}}
-  * This is a major release with significant changes and breaking updates.
-  {{/if}}
-
-  {{#if .NotableChanges }}
-  ## Notable Changes
-
-  {{ .NotableChanges }}
-  {{else}}
-  * No notable changes in this release.
-  {{/if}}
-
-tag-template: ''
-tag-prefix: ''
-change-template: '* $TITLE (#$NUMBER) @$AUTHOR'
-change-title-escapes: ''
-no-changes-template: '* No changes'
-version-template: '$MAJOR.$MINOR.$PATCH$PRERELEASE'
-version-resolver:
-  major:
-    labels: []
-  minor:
-    labels: []
-  patch:
-    labels: []
-  default: 'patch'
-categories: []
-exclude-labels: []
-include-labels: []
-include-paths: []
-exclude-contributors: []
-no-contributors-template: 'No contributors'
-replacers: []
-autolabeler: []
-sort-by: 'merged_at'
-sort-direction: 'descending'
-prerelease: false
-prerelease-identifier: ''
-include-pre-releases: false
-latest: 'true'
-filter-by-commitish: false
-commitish: ''
-category-template: ''
-header: ''
-footer: ''
 changelog:
   exclude:
     labels: []
     authors: []
   categories:
-    - title: 'Nouvelles fonctionnalités 🚀'
+    - title: Nouvelles fonctionnalités 🚀
       labels:
-        - 'feat'
-    - title: 'Modifications de code'
+        - feat
+    - title: Modifications de code
       labels:
-        - 'refactor'
-    - title: 'Mises à jour de style 💅'
+        - refactor
+    - title: Mises à jour de style 💅
       labels:
-        - 'style'
-    - title: 'Corrections de bugs 🐛'
+        - style
+    - title: Corrections de bugs 🐛
       labels:
-        - 'fix'
-    - title: 'Tests 🧪'
+        - fix
+    - title: Tests 🧪
       labels:
-        - 'test'
-    - title: 'Documentation 📚'
+        - test
+    - title: Documentation 📚
       labels:
-        - 'doc'
+        - doc
