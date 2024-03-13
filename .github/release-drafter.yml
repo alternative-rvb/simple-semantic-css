@@ -1,4 +1,23 @@
 name-template: 'Release {{ .ReleaseTag }}'
+template: |
+  ## Release {{ .Major }}.{{ .Minor }}.{{ .Patch }} {{ .PreRelease }} ({{ .TagName }})
+
+  {{#if .IsPatch }}
+  * This is a patch release.
+  {{else if .IsMinor }}
+  * This is a minor release with new features and improvements.
+  {{else}}
+  * This is a major release with significant changes and breaking updates.
+  {{/if}}
+
+  {{#if .NotableChanges }}
+  ## Notable Changes
+
+  {{ .NotableChanges }}
+  {{else}}
+  * No notable changes in this release.
+  {{/if}}
+
 tag-template: ''
 tag-prefix: ''
 change-template: '* $TITLE (#$NUMBER) @$AUTHOR'
