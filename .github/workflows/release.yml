@@ -41,11 +41,12 @@ jobs:
           if [[ $prev_tag ]]; then
             CHANGELOG=$(git log --pretty=format:"* [%h](https://github.com/$owner/$repo/commit/%h) %s" $prev_tag..HEAD)
           else
-            CHANGELOG=$(git log --pretty=format:"* [%h](https://github.com/$owner/$repo/commit/%h) %s" HEAD~10..HEAD)
+            CHANGELOG=$(git log --pretty=format:"* [%h](https://github.com/$owner/$repo/commit/%h) %s" HEAD~10 ..HEAD)
           fi
           echo "$CHANGELOG"
           echo "::endgroup::"
           echo "::set-output name=changelog::$CHANGELOG"
+      
 
       - name: Create Draft Release with Detailed Changelog
         uses: actions/create-release@v1
