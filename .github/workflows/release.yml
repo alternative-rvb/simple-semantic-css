@@ -27,7 +27,8 @@ jobs:
           echo "RELEASE_VERSION=${{ github.ref }}" >> $GITHUB_ENV
           echo "RELEASE_DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
           # Add logic to generate changelog content and write to a file
-          # echo "RELEASE_CHANGELOG=$(cat changelog.txt)" >> $GITHUB_ENV
+          # For example, if your changelog is stored in changelog.txt:
+          cat changelog.txt >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
