@@ -38,11 +38,11 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: ${{ github.ref }} # Use release_name instead of name
           body: |
-            Version: ${{ steps.release_notes.outputs.<version_variable_name> }}  # Replace with actual name
+            Version: ${{ steps.release_notes.outputs.version }}
             Date: ${{ steps.release_notes.outputs.date }}
             Changelog:
             ${{ steps.release_notes.outputs.changelog }}
           draft: true # Set draft to true to create a draft release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Pass the token as an environment variable
-  
+        
