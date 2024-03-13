@@ -1,0 +1,32 @@
+/* ANCHOR VARIABLES */
+
+@layer variables {
+    :root {
+        scroll-behavior: smooth;
+        font-size: 100%;
+        /* font-size to get 1rem = 10px  */
+        /* font-size: 62.5%; */
+        --theme1: #dc33ea;
+        --theme2: #ffc803;
+        --theme3: #bea5ff;
+        --theme4: #00d061;
+        --accent: #8ab3ff;
+        --dark: #0e0a35;
+        --light: hsla(0, 0%, 100%, 0.90);
+        --darker-30: hsla(0, 0%, 0%, 0.3);
+        --lighter-30: hsla(0, 0%, 100%, 0.3);
+        --darker-60: hsla(0, 0%, 0%, 0.6);
+        --lighter-60: hsla(0, 0%, 100%, 0.6);
+        --darker-90: hsla(0, 0%, 0%, 0.9);
+        --lighter-90: hsla(0, 0%, 100%, 0.9);
+        --white: hsl(0, 0%, 100%);
+        --black: hsl(0, 0%, 0%);
+        --title-font: 'Nunito', sans-serif;
+        --body-font: 'Nunito', sans-serif;
+        --header-height: 80px;
+        --footer-height: 80px;
+        --col-width: 400px;
+        /* Add d-grid and g-autofill */
+
+    }
+}
