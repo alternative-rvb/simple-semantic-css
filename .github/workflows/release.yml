@@ -19,20 +19,28 @@ jobs:
       - name: Install dependencies
         run: npm install
       
-      - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            css/**
-            js/**
-            images/**
-            example.html
-            index.html
-            info.html
-            LICENSE.md
-            README.md
-            signup.html
-          body: ${{ github.event.head_commit.message }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Create Release
+      #   id: create_release
+      #   uses: softprops/action-gh-release@v1
+      #   with:
+      #     files: |
+      #       css/**
+      #       js/**
+      #       images/**
+      #       example.html
+      #       index.html
+      #       info.html
+      #       LICENSE.md
+      #       README.md
+      #       signup.html
+      #     body: ${{ github.event.head_commit.message }}
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Debug files
+      run: |
+        ls -l css/**
+        ls -l js/**
+        ls -l images/**
+        ls -l example.html index.html info.html LICENSE.md README.md signup.html
+    
