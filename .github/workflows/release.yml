@@ -2,8 +2,8 @@ name: Generate Release Notes and Create Draft Release
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "*"
 
 jobs:
   generate-release-notes:
@@ -14,15 +14,15 @@ jobs:
         with:
           fetch-depth: 0  # Récupère tout l'historique du dépôt pour obtenir tous les commits
 
-      - name: Get Latest Commit Info
-        id: latest_commit
-        run: echo "::set-output name=commit_hash::$(git log -1 --format='%H')" && echo "::set-output name=commit_message::$(git log -1 --format='%s')"
+      - name: Get Latest Tag
+        id: latest_tag
+        run: echo "::set-output name=tag::$(git describe --abbrev=0 --tags)"
 
       - name: Generate Changelog Content
         id: generate_changelog
         run: |
           echo "::group::Generating Changelog"
-          CHANGELOG=$(git log --pretty=format:"* %s (%cn)")
+          CHANGELOG=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"* %s (%cn)")
           echo "$CHANGELOG"
           echo "::endgroup::"
           echo "::set-output name=changelog::$CHANGELOG"
@@ -32,7 +32,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.latest_commit.outputs.commit_hash }}
-          release_name: ${{ steps.latest_commit.outputs.commit_message }}
-          body: ${{ steps.generate_changelog.outputs.changelog }}
+          tag_name: ${{ steps.latest_tag.outputs.tag }}
+          release_name: ${{ steps.latest_tag.outputs.tag }}
+          body: |
+            ## ${{ github.repository }}-${{ steps.latest_tag.outputs.tag }}
+            
+            ${{ steps.generate_changelog.outputs.changelog }}
           draft: true  # Set to true for draft release
