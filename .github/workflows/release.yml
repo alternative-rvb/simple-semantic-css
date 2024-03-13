@@ -24,10 +24,10 @@ jobs:
       - name: Generate Release Notes
         id: release_notes
         run: |
-          echo "::set-env name=RELEASE_VERSION::$(echo ${{ github.ref }})"
-          echo "::set-env name=RELEASE_DATE::$(date +%Y-%m-%d)"
+          echo "RELEASE_VERSION=${{ github.ref }}" >> $GITHUB_ENV
+          echo "RELEASE_DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
           # Add logic to generate changelog content and write to a file
-          # echo "::set-env name=RELEASE_CHANGELOG::$(cat changelog.txt)"
+          # echo "RELEASE_CHANGELOG=$(cat changelog.txt)" >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -45,4 +45,3 @@ jobs:
           draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Pass the token as an environment variable
-        
