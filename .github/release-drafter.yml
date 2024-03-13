@@ -2,30 +2,34 @@
 # Configuration for release-drafter
 template: |
   ## ## ## {{ version }} ({{ date }})
-  ### {{#each categories}}**{{ title }}**
-  {{#each issues}}* {{#if linked}} (#{{ number }}) {{/if}}{{ title }} (@{{ author }})
+
+  ### {{#each categories}}
+  **{{ title }}**
+  {{#each issues}}
+    * {{#if linked}} (#{{ number }}) {{/if}} {{ title }} (@{{ author }})
   {{/each}}
   {{/each}}
 
 exclude:
-  labels: []
-  authors: []
+  labels: []  # Empty list for excluding labels
+  authors: []  # Empty list for excluding authors
+
 categories:
-  - title: Nouvelles fonctionnalités 🚀
+  - title: Nouvelles fonctionnalités 
     labels:
       - feat
-  - title: Modifications de code
+  - title: Modifications de code ⚙️
     labels:
       - refactor
-  - title: Mises à jour de style 💅
+  - title: Mises à jour de style ✨
     labels:
       - style
-  - title: Corrections de bugs 🐛
+  - title: Corrections de bugs 
     labels:
       - fix
-  - title: Tests 🧪
+  - title: Tests 
     labels:
       - test
-  - title: Documentation 📚
+  - title: Documentation 
     labels:
       - doc
