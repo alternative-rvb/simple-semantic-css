@@ -19,7 +19,6 @@ Simple Semantic CSS is a lightweight, from-scratch CSS framework designed to emp
 
 ## Features
 
-- **NEW**: Ajout d'informations concernant les releases de Simple Semantic CSS
 - **Semantic HTML5 Integration**: Enhances semantic HTML tags with informative styles, making it easier to understand and integrate the structure of web pages.
 - **Dark and Light Mode**: Natively supports dark and light themes using `@media (prefers-color-scheme: dark)` and `@media (prefers-color-scheme: light)`, adapting to users' system preferences seamlessly.
 - **Flexbox Utilities**: Offers utility classes for Flexbox, such as `.d-flex {display: flex;}`, simplifying the creation of flexible and responsive layouts.
