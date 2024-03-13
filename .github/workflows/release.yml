@@ -48,6 +48,8 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.repository }}
         with:
           tag_name: ${{ github.ref }}
           release_name: "**Release Notes for ${{ github.ref }}**"  # Clear release name
