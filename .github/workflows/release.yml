@@ -12,13 +12,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # Récupère tout l'historique du dépôt pour obtenir tous les commits
 
-      - name: Generate Release Notes
-        id: release_notes
+      - name: Get Latest Commit Info
+        id: latest_commit
+        run: echo "::set-output name=commit_hash::$(git log -1 --format='%H')" && echo "::set-output name=commit_message::$(git log -1 --format='%s')"
+
+      - name: Generate Changelog Content
+        id: generate_changelog
         run: |
-          chmod +x generate_release_notes.sh
-          generate_release_notes.sh
+          echo "::group::Generating Changelog"
+          ./generate_release_notes.sh  # Chemin vers le script
+          echo "::endgroup::"
+          echo "::set-output name=changelog::$CHANGELOG"
 
       - name: Create Draft Release
         uses: actions/create-release@v1
@@ -26,7 +32,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: ${{ steps.release_notes.outputs.stdout }}
+          release_name: ${{ steps.latest_commit.outputs.commit_message }}
+          body: ${{ steps.generate_changelog.outputs.changelog }}
           draft: true
-      
