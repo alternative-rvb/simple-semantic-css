@@ -1,0 +1,33 @@
+/* SECTION MEDIA QUERIES */
+
+/* ANCHOR THEME */
+@layer theme {
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --light: #0e0a35;
+            --dark: hsla(0, 0%, 100%, 0.90);
+            --lighter-30: hsla(0, 0%, 0%, 0.3);
+            --darker-30: hsla(0, 0%, 100%, 0.3);
+            --lighter-60: hsla(0, 0%, 0%, 0.6);
+            --darker-60: hsla(0, 0%, 100%, 0.6);
+            --lighter-90: hsla(0, 0%, 0%, 0.9);
+            --darker-90: hsla(0, 0%, 100%, 0.9);
+            --black: hsl(0, 0%, 100%);
+            --white: hsl(0, 0%, 0%);
+        }
+
+        input[type="checkbox"]:checked {
+            background-image: url('icons/check-white.svg');
+        }
+
+        input[type="radio"]:checked {
+            background-image: url('icons/check-white.svg');
+        }
+
+        select {
+            background-image: url("icons/chevron-down-white.svg");
+        }
+    }
+}
+
+/* !SECTION */

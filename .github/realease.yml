@@ -20,3 +20,6 @@ changelog:
     - title: Tests 🧪
       labels:
         - test
+    - title: Documentation 📚
+      labels:
+        - doc
