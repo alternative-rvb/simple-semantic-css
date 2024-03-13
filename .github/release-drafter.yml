@@ -1,24 +1,57 @@
 name-template: 'Release {{ .ReleaseTag }}'
+tag-template: ''
+tag-prefix: ''
+change-template: '* $TITLE (#$NUMBER) @$AUTHOR'
+change-title-escapes: ''
+no-changes-template: '* No changes'
+version-template: '$MAJOR.$MINOR.$PATCH$PRERELEASE'
+version-resolver:
+  major:
+    labels: []
+  minor:
+    labels: []
+  patch:
+    labels: []
+  default: 'patch'
+categories: []
+exclude-labels: []
+include-labels: []
+include-paths: []
+exclude-contributors: []
+no-contributors-template: 'No contributors'
+replacers: []
+autolabeler: []
+sort-by: 'merged_at'
+sort-direction: 'descending'
+prerelease: false
+prerelease-identifier: ''
+include-pre-releases: false
+latest: 'true'
+filter-by-commitish: false
+commitish: ''
+category-template: '## $TITLE'
+header: ''
+footer: ''
 changelog:
   exclude:
     labels: []
     authors: []
   categories:
-    - title: Nouvelles fonctionnalités 🚀
+    - title: 'Nouvelles fonctionnalités 🚀'
       labels:
-        - feat
-    - title: Modifications de code
+        - 'feat'
+    - title: 'Modifications de code'
       labels:
-        - refactor
-    - title: Mises à jour de style 💅
+        - 'refactor'
+    - title: 'Mises à jour de style 💅'
       labels:
-        - style
-    - title: Corrections de bugs 🐛
+        - 'style'
+    - title: 'Corrections de bugs 🐛'
       labels:
-        - fix
-    - title: Tests 🧪
+        - 'fix'
+    - title: 'Tests 🧪'
       labels:
-        - test
-    - title: Documentation 📚
+        - 'test'
+    - title: 'Documentation 📚'
       labels:
-        - doc
+        - 'doc'
