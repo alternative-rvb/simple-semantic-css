@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+        with:
+          ref: main
 
       - name: Install Release Drafter
         uses: release-drafter/release-drafter@v5
@@ -24,7 +26,7 @@ jobs:
       - name: Generate Changelog Content
         id: generate_changelog
         env:
-          CHANGELOG: $(git log --since="$(git describe --tags --abbrev=0 HEAD~)" --pretty=format:"* %s (%cn)")
+          CHANGELOG: $(git log --since="$(git describe --tags --abbrev=0 HEAD~1)" --pretty=format:"* %s (%cn)")
         run: |
           echo "::group::Generating Changelog"
           echo "$CHANGELOG"
@@ -40,3 +42,4 @@ jobs:
           release_name: ${{ github.ref }}  # Optional, can be customized
           body: ${{ env.CHANGELOG }}
           draft: true  # Set to true for draft release
+

@@ -1,5 +1,5 @@
 # /.github/release-drafter.yml
-# Configuration for release-drafter
+# Configuration pour release-drafter
 template: |
   ## ## ## {{ version }} ({{ date }})
 
