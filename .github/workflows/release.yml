@@ -31,15 +31,12 @@ jobs:
           git log ${previous_tag}..${latest_tag} --pretty=format:"* %s%n%n%b" --no-merges
           echo "::endgroup::"
 
-      - name: Create Draft Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.latest_tag.outputs.tag }}
-          release_name: ${{ steps.latest_tag.outputs.tag }}
-          body: |
-            ## ${{ github.repository }}-${{ steps.latest_tag.outputs.tag }}
-            
-            ${{ steps.generate_changelog.outputs.changelog }}
-          draft: true  # Set to true for draft release
+      - name: Generate Changelog Content
+        id: generate_changelog
+        run: |
+          echo "::group::Generating Changelog"
+          echo "Previous Tag: ${{ steps.previous_tag.outputs.previous_tag }}"
+          echo "Latest Tag: ${{ steps.latest_tag.outputs.tag }}"
+          git log --pretty="* %s%n%n%b" ${previous_tag}..${latest_tag} --no-merges
+          echo "::endgroup::"
+        
