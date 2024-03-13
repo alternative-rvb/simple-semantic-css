@@ -1,23 +1,23 @@
-changelog:
-  exclude:
-    labels: []
-    authors: []
-  categories:
-    - title: Nouvelles fonctionnalités 🚀
-      labels:
-        - feat
-    - title: Modifications de code
-      labels:
-        - refactor
-    - title: Mises à jour de style 💅
-      labels:
-        - style
-    - title: Corrections de bugs 🐛
-      labels:
-        - fix
-    - title: Tests 🧪
-      labels:
-        - test
-    - title: Documentation 📚
-      labels:
-        - doc
+# /.github/release-drafter.yml
+exclude:
+  labels: []
+  authors: []
+categories:
+  - title: Nouvelles fonctionnalités 🚀
+    labels:
+      - feat
+  - title: Modifications de code
+    labels:
+      - refactor
+  - title: Mises à jour de style 💅
+    labels:
+      - style
+  - title: Corrections de bugs 🐛
+    labels:
+      - fix
+  - title: Tests 🧪
+    labels:
+      - test
+  - title: Documentation 📚
+    labels:
+      - doc

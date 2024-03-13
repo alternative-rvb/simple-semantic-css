@@ -1,9 +1,11 @@
+# /.github/workflows/release.yml
+# /.github/workflows/release.yml
 name: Generate Release Notes
 
 on:
   push:
     tags:
-      - '*'
+      - "*"
 
 jobs:
   generate-release-notes:
@@ -11,11 +13,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      
+
       - name: Install Release Drafter
         uses: release-drafter/release-drafter@v5
         with:
-          config-name: .github/release-drafter.yml
+          config-name: ./release-drafter.yml # Changed path
           version: 5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -24,7 +26,7 @@ jobs:
         id: release_notes
         uses: release-drafter/release-drafter@v5
         with:
-          config-name: .github/release-drafter.yml
+          config-name: ./release-drafter.yml # Changed path
           version: 5
           tag: ${{ github.ref }}
         env:
