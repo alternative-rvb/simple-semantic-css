@@ -20,8 +20,8 @@ jobs:
       - name: Get Latest Commit Info # Étape pour obtenir les informations sur le dernier commit
         id: latest_commit
         run: |
-          echo "commit_hash=$(git log -1 --format='%H')" >> $GITHUB_ENV
-          echo "commit_message=$(git log -1 --format='%s')" >> $GITHUB_ENV
+          echo "::set-output name=commit_hash::$(git log -1 --format='%H')" 
+          echo "::set-output name=commit_message::$(git log -1 --format='%s')"
 
       - name: Generate Changelog Content # Étape pour générer le contenu du changelog
         id: generate_changelog
@@ -30,7 +30,7 @@ jobs:
           CHANGELOG=$(git log --pretty=format:"* %s (%cn)")
           echo "$CHANGELOG"
           echo "::endgroup::"
-          echo "changelog=$CHANGELOG" >> $GITHUB_ENV
+          echo "::set-output name=changelog::$CHANGELOG"
 
       - name: Create Draft Release # Étape pour créer une release draft sur GitHub
         uses: actions/create-release@v1
@@ -39,5 +39,5 @@ jobs:
         with:
           tag_name: ${{ github.ref }} # Utilise le nom du tag GitHub comme nom de la version
           release_name: "Release Notes for ${{ github.ref }}" # Nom de la release
-          body: ${{ env.changelog }} # Corps de la release avec les notes de version
+          body: ${{ steps.generate_changelog.outputs.changelog }} # Corps de la release avec les notes de version
           draft: true # Crée la release en tant que draft
