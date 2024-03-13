@@ -18,16 +18,14 @@ jobs:
         id: latest_tag
         run: echo "::set-output name=tag::$(git describe --abbrev=0 --tags)"
 
-      - name: Get Previous Tag
-        id: previous_tag
-        run: echo "::set-output name=previous_tag::$(git describe --abbrev=0 --tags $(git describe --tags --abbrev=0)^)"
-
       - name: Generate Changelog Content
         id: generate_changelog
         run: |
           echo "::group::Generating Changelog"
-          ./generate_release_notes.sh "${{ steps.previous_tag.outputs.previous_tag }}" "${{ steps.latest_tag.outputs.tag }}"
+          CHANGELOG=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"* %s (%cn)")
+          echo "$CHANGELOG"
           echo "::endgroup::"
+          echo "::set-output name=changelog::$CHANGELOG"
 
       - name: Create Draft Release
         uses: actions/create-release@v1
@@ -36,5 +34,8 @@ jobs:
         with:
           tag_name: ${{ steps.latest_tag.outputs.tag }}
           release_name: ${{ steps.latest_tag.outputs.tag }}
-          body: ${{ steps.generate_changelog.outputs.stdout }}
+          body: |
+            ## ${{ github.repository }}-${{ steps.latest_tag.outputs.tag }}
+            
+            ${{ steps.generate_changelog.outputs.changelog }}
           draft: true  # Set to true for draft release
