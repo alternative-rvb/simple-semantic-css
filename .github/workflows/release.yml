@@ -1,3 +1,10 @@
+name: Generate Release Notes and Create Draft Release
+
+on:
+  push:
+    tags:
+      - '*'
+
 jobs:
   generate-release-notes:
     runs-on: ubuntu-latest
@@ -22,3 +29,4 @@ jobs:
           release_name: Release ${{ github.ref }}
           body: ${{ steps.release_notes.outputs.stdout }}
           draft: true
+      
