@@ -20,3 +20,5 @@ jobs:
           echo "# Release Note" > RELEASE.md
           git log --pretty=format:"- %s [%h](https://github.com/OWNER/REPOSITORY/commit/%H)" > temp.md
           cat temp.md >> RELEASE.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.ARVB }}
