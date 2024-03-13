@@ -1,3 +1,5 @@
+# /.github/workflows/release.yml
+
 name: Generate Release Notes and Create Draft Release
 
 on:
@@ -14,8 +16,18 @@ jobs:
         with:
           fetch-depth: 0  # Récupère tout l'historique du dépôt pour obtenir tous les commits
 
+      - name: Get Latest Commit Info
+        id: latest_commit
+        run: echo "::set-output name=commit_hash::$(git log -1 --format='%H')" && echo "::set-output name=commit_message::$(git log -1 --format='%s')"
+
       - name: Generate Changelog Content
-        run: npx conventional-changelog -p angular -i CHANGELOG.md -s -r 0
+        id: generate_changelog
+        run: |
+          echo "::group::Generating Changelog"
+          CHANGELOG=$(git log --pretty=format:"* %s (%cn)")
+          echo "$CHANGELOG"
+          echo "::endgroup::"
+          echo "::set-output name=changelog::$CHANGELOG"
 
       - name: Create Draft Release
         uses: actions/create-release@v1
@@ -23,7 +35,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref_name }}
-          body: |
-            $(cat CHANGELOG.md)
-          draft: true
+          release_name: ${{ steps.latest_commit.outputs.commit_message }}
+          body: ${{ steps.generate_changelog.outputs.changelog }}
+          draft: true  
