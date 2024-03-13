@@ -18,7 +18,7 @@ jobs:
         id: release_notes
         run: |
           chmod +x generate_release_notes.sh
-          ./generate_release_notes.sh
+          generate_release_notes.sh
 
       - name: Create Draft Release
         uses: actions/create-release@v1
