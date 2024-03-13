@@ -20,17 +20,9 @@ jobs:
         id: commit_info
         run: |
           echo "::group::Getting Commit Info"
-          echo "::set-output name=commit_message::$(git log --pretty=format:"%s (%cn)")"
-          echo "::set-output name=commit_hash::$(git log --pretty=format:"%H")"
+          echo "Commit Message: $(git log --pretty=format:"%H%n%an%n%ae%n%ad%n%s" -1)"
           echo "::endgroup::"
-
-      - name: Generate Changelog Content
-        id: generate_changelog
-        run: |
-          echo "::group::Generating Changelog"
-          echo "${{ steps.commit_info.outputs.commit_message }}"
-          echo "::endgroup::"
-          echo "::set-output name=changelog::${{ steps.commit_info.outputs.commit_message }}"
+          echo "::set-output name=commit_info::$(git log --pretty=format:"%H%n%an%n%ae%n%ad%n%s" -1)"
 
       - name: Create Draft Release
         uses: actions/create-release@v1
@@ -39,5 +31,9 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: "Release Notes for ${{ github.ref }}"
-          body: ${{ steps.generate_changelog.outputs.changelog }}
+          body: |
+            **Commit Details:**
+            ```
+            ${{ steps.commit_info.outputs.commit_info }}
+            ```
           draft: true
