@@ -36,11 +36,11 @@ jobs:
       #     body: ${{ github.event.head_commit.message }}
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Debug files
-      run: |
-        ls -l css/**
-        ls -l js/**
-        ls -l images/**
-        ls -l example.html index.html info.html LICENSE.md README.md signup.html
+        run: |
+          ls -l css/**
+          ls -l js/**
+          ls -l images/**
+          ls -l example.html index.html info.html LICENSE.md README.md signup.html
     
