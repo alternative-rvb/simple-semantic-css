@@ -28,21 +28,7 @@ jobs:
           echo "RELEASE_DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
           # Add logic to generate changelog content and write to a file
           # For example, if your changelog is stored in changelog.txt:
-          cat changelog.txt >> $GITHUB_ENV
+          echo "RELEASE_CHANGELOG=$(cat changelog.txt)" >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create Draft Release
-        id: create_release
-        uses: actions/create-release@v1
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
-          body: |
-            Version: ${{ env.RELEASE_VERSION }}
-            Date: ${{ env.RELEASE_DATE }}
-            Changelog:
-            ${{ env.RELEASE_CHANGELOG }}
-          draft: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Pass the token as an environment variable
+      
