@@ -1,0 +1,20 @@
+name: Generate Release Note
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Generate Release Note
+        run: |
+          echo "# Release Note" > RELEASE.md
+          git log --pretty=format:"- %s [%h](https://github.com/OWNER/REPOSITORY/commit/%H)" > temp.md
+          cat temp.md >> RELEASE.md
