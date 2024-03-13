@@ -26,11 +26,11 @@ jobs:
         env:
           RELEASE_VERSION: ${{ github.ref }}
           RELEASE_DATE: $(date +%Y-%m-%d)
-        # Add logic to generate changelog content and write to a file
-        # For example, if your changelog is stored in changelog.txt:
-        # run: |
-        #   RELEASE_CHANGELOG=$(cat RELEASE.md)
-        #   echo "::set-output name=changelog::$RELEASE_CHANGELOG"
+        run: |
+          # Replace this with your logic to generate changelog content
+          # This example assumes commits are properly formatted
+          RELEASE_CHANGELOG=$(git log --since="$(git describe --tags --abbrev=0 HEAD~1)" --pretty=format:"* %s (%cn)")
+          echo "::set-output name=changelog::$RELEASE_CHANGELOG"
         shell: bash
   
         
