@@ -17,32 +17,26 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Identify Previous Tag (Optional)
-        id: prev_tag
+      - name: Get Latest Tag
+        id: latest_tag
         run: |
-          git fetch --depth=1 origin
-          if [[ $(git describe --abbrev=0 --tags HEAD^) ]]; then
-            echo "::set-output name=prev_tag::$(git describe --abbrev=0 --tags HEAD^)"
-          else
-            echo "::set-output name=prev_tag::"  # No previous tag found
-          fi
+          git fetch --tags
+          latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+          echo "::set-output name=latest_tag::$latest_tag"
 
-      - name: Get Latest Commit Info
-        id: latest_commit
+      - name: Get Previous Tag
+        id: previous_tag
         run: |
-          echo "::set-output name=commit_hash::$(git log -1 --format='%H')"
-          echo "::set-output name=commit_message::$(git log -1 --format='%s')"
+          previous_tag=$(git describe --tags $(git rev-list --tags=$latest_tag --max-count=2 | tail -n 1))
+          echo "::set-output name=previous_tag::$previous_tag"
 
       - name: Generate Detailed Changelog Content
         id: generate_changelog
         run: |
           echo "::group::Generating Detailed Changelog"
-          prev_tag=${{ steps.prev_tag.outputs.prev_tag }}  # Optional: Use prev_tag if available
-          if [[ $prev_tag ]]; then
-            CHANGELOG=$(git log --pretty=format:"* [%h](https://github.com/$owner/$repo/commit/%h) %s (%cn)" $prev_tag..HEAD)
-          else
-            CHANGELOG=$(git log --pretty=format:"* [%h](https://github.com/$owner/$repo/commit/%h) %s (%cn)")
-          fi
+          prev_tag=${{ steps.previous_tag.outputs.previous_tag }}
+          latest_tag=${{ steps.latest_tag.outputs.latest_tag }}
+          CHANGELOG=$(git log --pretty=format:"* [%h](https://github.com/$owner/$repo/commit/%h) %s (%cn)" $prev_tag..$latest_tag)
           echo "$CHANGELOG"
           echo "::endgroup::"
           echo "::set-output name=changelog::$CHANGELOG"
