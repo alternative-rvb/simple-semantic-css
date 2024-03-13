@@ -29,7 +29,7 @@ jobs:
         # Add logic to generate changelog content and write to a file
         # For example, if your changelog is stored in changelog.txt:
         run: |
-          RELEASE_CHANGELOG=$(cat changelog.txt)
+          RELEASE_CHANGELOG=$(cat RELEASE.md)
           echo "::set-output name=changelog::$RELEASE_CHANGELOG"
         shell: bash
   
