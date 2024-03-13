@@ -1,3 +1,5 @@
+# /.github/workflows/release.yml
+
 name: Generate Release Notes and Create Draft Release
 
 on:
@@ -35,4 +37,4 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: ${{ steps.latest_commit.outputs.commit_message }}
           body: ${{ steps.generate_changelog.outputs.changelog }}
-          draft: true  # Set to true for draft release
+          draft: true  
