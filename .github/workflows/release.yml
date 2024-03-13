@@ -1,6 +1,6 @@
 # /.github/workflows/release.yml
 
-name: Generate Detailed Release Notes and Create Draft Release
+name: Generate Release Notes and Create Draft Release
 
 on:
   push:
@@ -10,65 +10,31 @@ on:
 jobs:
   generate-release-notes:
     runs-on: ubuntu-latest
-    env:
-      owner: ${{ github.repository_owner }}
-      repo: ${{ github.repository }}
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Récupère tout l'historique du dépôt pour obtenir tous les commits
 
-      - name: Fetch Latest Changes
-        run: |
-          git fetch --depth=1 origin
+      - name: Get Latest Commit Info
+        id: latest_commit
+        run: echo "::set-output name=commit_hash::$(git log -1 --format='%H')" && echo "::set-output name=commit_message::$(git log -1 --format='%s')"
 
-      - name: Get Latest and Previous Tags
-        id: tags
-        run: |
-          latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
-          previous_tag=$(git describe --tags $(git rev-list --tags=$latest_tag --max-count=2 | tail -n 1))
-          echo "::set-output name=latest_tag::$latest_tag"
-          echo "::set-output name=previous_tag::$previous_tag"
-
-      - name: Generate Detailed Changelog Content
+      - name: Generate Changelog Content
         id: generate_changelog
         run: |
-          echo "::group::Generating Detailed Changelog"
-          prev_tag=${{ steps.tags.outputs.previous_tag }}
-          latest_tag=${{ steps.tags.outputs.latest_tag }}
-          echo "Previous Tag: $prev_tag"
-          echo "Latest Tag: $latest_tag"
-
-          # Vérifier si la plage de balises est vide
-          if [[ -z "$prev_tag" || -z "$latest_tag" ]]; then
-            echo "::error::Invalid tag range."
-            exit 1
-          fi
-
-          # Vérifier si le fichier suivi est modifié
-          if [[ ! "$(git diff --name-only $prev_tag..$latest_tag)" =~ .*\.md ]]; then
-            echo "::warning::No changes to tracked files in tag range."
-            exit 0
-          fi
-
-          # Afficher tous les commits, même sans modifications de fichiers
-          CHANGELOG=$(git log --all --oneline $prev_tag..$latest_tag)
-          if [[ -z "$CHANGELOG" ]]; then
-            CHANGELOG="No changes since latest tag."
-          fi
-          echo "Generated Changelog: $CHANGELOG"
+          echo "::group::Generating Changelog"
+          CHANGELOG=$(git log --pretty=format:"* %s (%cn)")
+          echo "$CHANGELOG"
           echo "::endgroup::"
           echo "::set-output name=changelog::$CHANGELOG"
 
-      - name: Create Draft Release with Detailed Changelog
+      - name: Create Draft Release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: "**Release Notes for ${{ github.ref }}**"  # Clear release name
-          body: |
-            **Detailed Changelog:**
-
-            ${{ steps.generate_changelog.outputs.changelog }}
-
-          draft: true
+          release_name: ${{ steps.latest_commit.outputs.commit_message }}
+          body: ${{ steps.generate_changelog.outputs.changelog }}
+          draft: true  
