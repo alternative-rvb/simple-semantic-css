@@ -21,18 +21,25 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate Release Notes
-        id: release_notes
-        env:
-          RELEASE_VERSION: ${{ github.ref }}
-          RELEASE_DATE: $(date +%Y-%m-%d)
+      - name: Generate Changelog Content
+        id: generate_changelog
         run: |
-          # Replace this with your logic to generate changelog content
-          # This example assumes commits are properly formatted
+          # Replace this with your logic to generate changelog content (Option A)
+          # Or keep it as is for automatic changelog generation (Option B)
           RELEASE_CHANGELOG=$(git log --since="$(git describe --tags --abbrev=0 HEAD~1)" --pretty=format:"* %s (%cn)")
           echo "::set-output name=changelog::$RELEASE_CHANGELOG"
         shell: bash
-  
+
+      - name: Create Draft Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}  # Optional, can be customized
+          body: ${{ steps.generate_changelog.outputs.changelog }}
+          draft: true  # Set to true for draft release
+
         
         
       
