@@ -1,0 +1,126 @@
+/*ANCHOR INFO */
+
+@layer info {
+
+    .info h1::after,
+    .info h2::after,
+    .info h3::after,
+    .info h4::after,
+    .info h5::after,
+    .info h6::after {
+        color: inherit;
+        opacity: 0.2;
+    }
+
+    .info h1::after {
+        content: " h1";
+    }
+
+    .info h2::after {
+        content: " h2";
+    }
+
+    .info h3::after {
+        content: " h3";
+    }
+
+    .info h4::after {
+        content: " h4";
+    }
+
+    .info h5::after {
+        content: " h5";
+    }
+
+    .info h6::after {
+        content: " h6";
+    }
+
+    .info header,
+    .info footer,
+    .info main,
+    .info section,
+    .info article,
+    .info aside,
+    .info nav {
+        border: 2px solid transparent;
+        border-radius: 5px;
+        position: relative;
+        padding: 1rem;
+    }
+
+    .info header::before,
+    .info footer::before,
+    .info main::before,
+    .info section::before,
+    .info article::before,
+    .info aside::before,
+    .info nav::before {
+        position: absolute;
+        font-size: 10px;
+        top: 2px;
+        left: 4px;
+        border-radius: 5px;
+    }
+
+    .info header,
+    .info footer,
+    .info main {
+        border-color: var(--theme1);
+    }
+
+    .info header::before {
+        content: "header";
+        color: var(--theme1);
+    }
+
+    .info footer::before {
+        content: "footer";
+        color: var(--theme1);
+    }
+
+    .info main::before {
+        content: "main";
+        color: var(--theme1);
+    }
+
+    .info section {
+        border-color: var(--theme2);
+    }
+
+    .info section::before {
+        content: "section";
+        color: var(--theme2);
+    }
+
+    .info article {
+        border-color: var(--theme3);
+    }
+
+    .info article::before {
+        content: "article";
+        color: var(--theme3);
+    }
+
+    .info aside {
+        border-color: var(--theme4);
+    }
+
+    .info aside::before {
+        content: "aside";
+        color: var(--theme4);
+    }
+
+    .info nav {
+        border-color: var(--accent);
+    }
+
+    .info nav::before {
+        content: "nav";
+        color: var(--accent);
+    }
+
+    .info div {
+        border: 2px dashed rgba(255, 255, 255, 0.2);
+    }
+}
