@@ -29,6 +29,8 @@ jobs:
           # Add logic to generate changelog content and write to a file
           # For example, if your changelog is stored in changelog.txt:
           echo "RELEASE_CHANGELOG=$(cat changelog.txt)" >> $GITHUB_ENV
+        shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
       
