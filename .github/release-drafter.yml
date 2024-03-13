@@ -29,7 +29,7 @@ include-pre-releases: false
 latest: 'true'
 filter-by-commitish: false
 commitish: ''
-category-template: '## $TITLE'
+category-template: ''
 header: ''
 footer: ''
 changelog:
