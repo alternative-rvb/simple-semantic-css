@@ -23,14 +23,16 @@ jobs:
 
       - name: Generate Release Notes
         id: release_notes
-        run: |
-          echo "RELEASE_VERSION=${{ github.ref }}" >> $GITHUB_ENV
-          echo "RELEASE_DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
-          # Add logic to generate changelog content and write to a file
-          # For example, if your changelog is stored in changelog.txt:
-          echo "RELEASE_CHANGELOG=$(cat changelog.txt)" >> $GITHUB_ENV
-        shell: bash
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_VERSION: ${{ github.ref }}
+          RELEASE_DATE: $(date +%Y-%m-%d)
+        # Add logic to generate changelog content and write to a file
+        # For example, if your changelog is stored in changelog.txt:
+        run: |
+          RELEASE_CHANGELOG=$(cat changelog.txt)
+          echo "::set-output name=changelog::$RELEASE_CHANGELOG"
+        shell: bash
+  
+        
         
       
