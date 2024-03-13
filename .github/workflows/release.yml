@@ -37,6 +37,19 @@ jobs:
           latest_tag=${{ steps.tags.outputs.latest_tag }}
           echo "Previous Tag: $prev_tag"
           echo "Latest Tag: $latest_tag"
+      
+          # Vérifier si la plage de balises est vide
+          if [[ -z "$prev_tag" || -z "$latest_tag" ]]; then
+            echo "::error::Invalid tag range."
+            exit 1
+          fi
+      
+          # Vérifier s'il y a des commits dans la plage
+          if [[ "$(git rev-list $prev_tag..$latest_tag --count)" -eq 0 ]]; then
+            echo "::warning::No commits found in tag range."
+            exit 0
+          fi
+      
           CHANGELOG=$(git log --all --pretty=format:"* [%h](https://github.com/$owner/$repo/commit/%h) %s (%cn)" $prev_tag..$latest_tag)
           if [[ -z "$CHANGELOG" ]]; then
             CHANGELOG="No changes since latest tag."
@@ -44,6 +57,8 @@ jobs:
           echo "Generated Changelog: $CHANGELOG"
           echo "::endgroup::"
           echo "::set-output name=changelog::$CHANGELOG"
+        
+        
 
       - name: Create Draft Release with Detailed Changelog
         uses: actions/create-release@v1
