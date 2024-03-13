@@ -1,6 +1,6 @@
 # /.github/workflows/release.yml
 
-name: Generate Release Notes and Create Draft Release
+name: Generate Detailed Release Notes and Create Draft Release
 
 on:
   push:
@@ -12,29 +12,48 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Récupère tout l'historique du dépôt pour obtenir tous les commits
+        uses: actions/checkout@v3
 
-      - name: Get Latest Commit Info
-        id: latest_commit
-        run: echo "::set-output name=commit_hash::$(git log -1 --format='%H')" && echo "::set-output name=commit_message::$(git log -1 --format='%s')"
+      - name: Fetch Latest Changes (Optional)
+        # This step can be removed if you're sure your default fetch depth retrieves all commits
+        run: |
+          git fetch --depth=0 origin
 
-      - name: Generate Changelog Content
+      - name: Get Latest Tag Info
+        id: latest_tag
+        run: |
+          latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
+          echo "::set-output name=latest_tag::$latest_tag"
+
+      - name: Get Previous Tag (Optional)
+        id: previous_tag
+        if: ${{ github.ref != 'refs/heads/main' }}  # Only get previous tag for releases, not main branch pushes
+        run: |
+          previous_tag=$(git describe --tags $(git rev-list --tags=$latest_tag --max-count=2 | tail -n 1))
+          echo "::set-output name=previous_tag::$previous_tag"
+
+      - name: Generate Detailed Changelog Content
         id: generate_changelog
         run: |
           echo "::group::Generating Changelog"
-          CHANGELOG=$(git log --pretty=format:"* %s (%cn)")
-          echo "$CHANGELOG"
+          prev_tag=${{ steps.previous_tag.outputs.previous_tag }}
+          latest_tag=${{ steps.latest_tag.outputs.latest_tag }}
+          
+          # Use a format string to structure the changelog
+          CHANGELOG=$(git log --pretty=format:"** - %s (%cn)" $prev_tag..$latest_tag)
+          if [[ -z "$CHANGELOG" ]]; then
+            CHANGELOG="No changes since latest tag."
+          fi
+          echo "Generated Changelog: $CHANGELOG"
           echo "::endgroup::"
           echo "::set-output name=changelog::$CHANGELOG"
 
-      - name: Create Draft Release
+      - name: Create Draft Release with Detailed Changelog
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: ${{ steps.latest_commit.outputs.commit_message }}
+          release_name: "**${{ github.repository }} - ${{ steps.latest_tag.outputs.latest_tag }}**"  # Clear release name with project name and tag
           body: ${{ steps.generate_changelog.outputs.changelog }}
-          draft: true  
+          draft: true
