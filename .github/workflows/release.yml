@@ -20,9 +20,9 @@ jobs:
         id: commit_info
         run: |
           echo "::group::Getting Commit Info"
-          echo "Commit Message: $(git log --pretty=format:"%H%n%an%n%ae%n%ad%n%s" -1)"
+          git show --format=fuller -s > commit_info.txt
+          echo "::set-output name=commit_info::$(cat commit_info.txt)"
           echo "::endgroup::"
-          echo "::set-output name=commit_info::$(git log --pretty=format:"%H%n%an%n%ae%n%ad%n%s" -1)"
 
       - name: Create Draft Release
         uses: actions/create-release@v1
