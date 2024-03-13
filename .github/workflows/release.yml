@@ -16,20 +16,21 @@ jobs:
         with:
           fetch-depth: 0  # Récupère tout l'historique du dépôt pour obtenir tous les commits
 
-      - name: Get Latest Commit Info
-        id: latest_commit
+      - name: Get Commit Info
+        id: commit_info
         run: |
-          echo "::set-output name=commit_hash::$(git log -1 --format='%H')" 
-          echo "::set-output name=commit_message::$(git log -1 --format='%s')"
+          echo "::group::Getting Commit Info"
+          echo "::set-output name=commit_message::$(git log --pretty=format:"%s (%cn)")"
+          echo "::set-output name=commit_hash::$(git log --pretty=format:"%H")"
+          echo "::endgroup::"
 
       - name: Generate Changelog Content
         id: generate_changelog
         run: |
           echo "::group::Generating Changelog"
-          CHANGELOG=$(git log --pretty=format:"* %s (%cn)")
-          echo "$CHANGELOG"
+          echo "${{ steps.commit_info.outputs.commit_message }}"
           echo "::endgroup::"
-          echo "::set-output name=changelog::$CHANGELOG"
+          echo "::set-output name=changelog::${{ steps.commit_info.outputs.commit_message }}"
 
       - name: Create Draft Release
         uses: actions/create-release@v1
