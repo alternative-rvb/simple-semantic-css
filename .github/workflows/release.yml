@@ -15,12 +15,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get Latest Commit Info
-        id: latest_commit
-        run: |
-          echo "::set-output name=commit_hash::$(git log -1 --format='%H')" 
-          echo "::set-output name=commit_message::$(git log -1 --format='%s')"
-
       - name: Get Previous Tag
         id: prev_tag
         run: |
@@ -38,7 +32,7 @@ jobs:
       - name: Extract Changelog Content
         id: extract_changelog
         run: |
-          changelog_content=$(cat ${{ steps.generate_changelog.outputs.changelog_file }})
+          changelog_content=$(paste -sd "\n" changelog.txt)
           echo "::set-output name=changelog_content::$changelog_content"
 
       - name: Generate Changelog Test Debug
@@ -51,7 +45,7 @@ jobs:
       - name: Display Changelog Content Debug
         run: |
           cat ${{ steps.generate_changelog.outputs.changelog_file }}
-      
+
       - name: Create Draft Release
         uses: actions/create-release@v1
         env:
