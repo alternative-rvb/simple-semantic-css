@@ -35,11 +35,17 @@ jobs:
           echo "::endgroup::"
           echo "::set-output name=changelog_file::changelog.txt"
 
+      - name: Generate Changelog Test Debug
+        run: |
+          changelog_file="${{ steps.generate_changelog.outputs.changelog_file }}"
+          echo "Length of changelog file: $(wc -l < $changelog_file)"
+          echo "Changelog content from file:"
+          cat $changelog_file
+
       - name: Display Changelog Content Debug
-        id: display_changelog
         run: |
           cat ${{ steps.generate_changelog.outputs.changelog_file }}
-          echo "::set-output name=changelog::$(cat ${{ steps.generate_changelog.outputs.changelog_file }})"
+      
 
       - name: Create Draft Release
         uses: actions/create-release@v1
@@ -48,5 +54,6 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: "Release Notes for ${{ github.ref }}"
-          body: ${{ steps.display_changelog.outputs.changelog }}
+          body: |
+            $(cat ${{ steps.generate_changelog.outputs.changelog_file }})
           draft: true
