@@ -23,7 +23,7 @@ jobs:
           echo "::set-output name=commit_hash::$(git log -1 --format='%H')" 
           echo "::set-output name=commit_message::$(git log -1 --format='%s')"
 
-      - name: Generate Changelog Content # Étape pour générer le contenu du changelog
+      - name: Generate Changelog Content
         id: generate_changelog
         run: |
           echo "::group::Generating Changelog"
@@ -32,8 +32,8 @@ jobs:
           echo "::endgroup::"
           echo "::set-output name=changelog::$CHANGELOG"
 
-      - name: Display Changelog Content # Étape pour afficher le contenu du changelog
-        run: echo ${{ steps.generate_changelog.outputs.changelog }}
+      - name: Display Changelog Content
+        run: echo "${{ steps.generate_changelog.outputs.changelog }}"
 
       - name: Create Draft Release # Étape pour créer une release draft sur GitHub
         uses: actions/create-release@v1
