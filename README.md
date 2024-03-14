@@ -19,7 +19,7 @@ Simple Semantic CSS is a lightweight, from-scratch CSS framework designed to emp
 
 ## Features
 
-- **NEW**: Ajout d'informations concernant les releases de Simple Semantic CSS
+- **NEW**: Ajout Release Note
 - **Semantic HTML5 Integration**: Enhances semantic HTML tags with informative styles, making it easier to understand and integrate the structure of web pages.
 - **Dark and Light Mode**: Natively supports dark and light themes using `@media (prefers-color-scheme: dark)` and `@media (prefers-color-scheme: light)`, adapting to users' system preferences seamlessly.
 - **Flexbox Utilities**: Offers utility classes for Flexbox, such as `.d-flex {display: flex;}`, simplifying the creation of flexible and responsive layouts.
@@ -84,10 +84,3 @@ I'm Nicolas Malet, the creator of Simple Semantic CSS. Passionate about web deve
 - **Contact Me**: [alternative.rvb@gmail.com](mailto:alternative.rvb@gmail.com)
 
 I'm always interested in collaborating on projects, sharing knowledge, and contributing to the open-source community. Feel free to reach out if you have any questions, suggestions, or just want to connect!
-
-
-## test 1
-
-## test 2
-
-## test 3
