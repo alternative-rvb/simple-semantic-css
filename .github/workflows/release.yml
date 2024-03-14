@@ -29,13 +29,21 @@ jobs:
           echo "::endgroup::"
           echo "::set-output name=changelog_file::changelog.txt"
 
+      - name: Read Changelog Content
+        id: read_changelog
+        run: |
+          changelog_content=$(cat ${{ steps.generate_changelog.outputs.changelog_file }})
+          echo "::set-output name=changelog_content::$changelog_content"
+
       - name: Create Draft Release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v1
+        id: create_release
+        with:
+          files: |
+            ${{ steps.generate_changelog.outputs.changelog_file }}
+          tag_name: ${{ github.ref }}
+          name: "Release Notes for ${{ github.ref }}"
+          body: ${{ steps.read_changelog.outputs.changelog_content }}
+          draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: "Release Notes for ${{ github.ref }}"
-          body: |
-            $(cat ${{ steps.generate_changelog.outputs.changelog_file }})
-          draft: true
