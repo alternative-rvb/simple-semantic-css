@@ -26,11 +26,10 @@ jobs:
       - name: Generate Changelog Content # Étape pour générer le contenu du changelog
         id: generate_changelog
         run: |
-          echo "::group::Generating Changelog"
-          CHANGELOG=$(git log --pretty=format:"* %s (%cn)")
-          echo "$CHANGELOG"
-          echo "::endgroup::"
-          echo "::set-output name=changelog::$CHANGELOG"
+          echo "::set-output name=changelog::$(node .github/scripts/generate-changelog.js ${{ steps.latest_commit.outputs.commit_hash }} ${{ steps.latest_commit.outputs.commit_message }})"
+
+      - name: Display Changelog Content # Étape pour afficher le contenu du changelog
+        run: echo ${{ steps.generate_changelog.outputs.changelog }}
 
       - name: Create Draft Release # Étape pour créer une release draft sur GitHub
         uses: actions/create-release@v1
