@@ -26,7 +26,7 @@ jobs:
         run: |
           echo "::set-output name=previous_tag::$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))"
 
-      - name: Generate Changelog Content Debug
+      - name: Generate Changelog Content
         id: generate_changelog
         run: |
           echo "::group::Generating Changelog"
@@ -46,8 +46,8 @@ jobs:
         run: |
           cat ${{ steps.generate_changelog.outputs.changelog_file }}
       
-
       - name: Create Draft Release
+        id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -55,5 +55,5 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: "Release Notes for ${{ github.ref }}"
           body: |
-            $(cat ${{ steps.generate_changelog.outputs.changelog_file }})
+            $(cat changelog.txt)
           draft: true
