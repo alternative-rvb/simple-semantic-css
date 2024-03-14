@@ -15,6 +15,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Get Latest Commit Info
+        id: latest_commit
+        run: |
+          echo "::set-output name=commit_hash::$(git log -1 --format='%H')" 
+          echo "::set-output name=commit_message::$(git log -1 --format='%s')"
+
       - name: Get Previous Tag
         id: prev_tag
         run: |
@@ -29,21 +35,25 @@ jobs:
           echo "::endgroup::"
           echo "::set-output name=changelog_file::changelog.txt"
 
-      - name: Read Changelog Content
-        id: read_changelog
+      - name: Generate Changelog Test Debug
         run: |
-          changelog_content=$(cat ${{ steps.generate_changelog.outputs.changelog_file }})
-          echo "::set-output name=changelog_content::$changelog_content"
+          changelog_file="${{ steps.generate_changelog.outputs.changelog_file }}"
+          echo "Length of changelog file: $(wc -l < $changelog_file)"
+          echo "Changelog content from file:"
+          cat $changelog_file
+
+      - name: Display Changelog Content Debug
+        run: |
+          cat ${{ steps.generate_changelog.outputs.changelog_file }}
+      
 
       - name: Create Draft Release
-        uses: softprops/action-gh-release@v1
-        id: create_release
-        with:
-          files: |
-            ${{ steps.generate_changelog.outputs.changelog_file }}
-          tag_name: ${{ github.ref }}
-          name: "Release Notes for ${{ github.ref }}"
-          body: ${{ steps.read_changelog.outputs.changelog_content }}
-          draft: true
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: "Release Notes for ${{ github.ref }}"
+          body: |
+            $(cat ${{ steps.generate_changelog.outputs.changelog_file }})
+          draft: true
