@@ -1,47 +1,43 @@
 # /.github/workflows/release.yml
 
-name: Génération des Notes de Version et Création d'une Release Préliminaire
+name: Generate Release Notes and Create Draft Release # Nom du workflow
 
 on:
   push:
     tags:
-      - '*' # Déclenchement du workflow à chaque push d'un tag sur le dépôt
+      - "*" # Déclenche le workflow à chaque fois qu'un tag est poussé sur le dépôt
 
 jobs:
   generate-release-notes:
-    runs-on: ubuntu-latest # Exécution sur une instance Ubuntu
+    runs-on: ubuntu-latest # Utilise Ubuntu comme système d'exécution
 
     steps:
-      - name: Clonage du Dépôt
+      - name: Checkout Repository # Étape pour cloner le dépôt
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0 # Récupération de l'historique complet du dépôt pour obtenir tous les commits
+          fetch-depth: 0 # Récupère tout l'historique du dépôt pour obtenir tous les commits
 
-      - name: Extraction des Informations du Dernier Commit
+      - name: Get Latest Commit Info # Étape pour obtenir les informations sur le dernier commit
         id: latest_commit
         run: |
-          commit_hash=$(git log -1 --format='%H')
-          commit_message=$(git log -1 --format='%s')
-          echo "::set-output name=commit_hash::$commit_hash"
-          echo "::set-output name=commit_message::$commit_message"
+          echo "::set-output name=commit_hash::$(git log -1 --format='%H')" 
+          echo "::set-output name=commit_message::$(git log -1 --format='%s')"
 
-      - name: Génération du Contenu du Changelog
+      - name: Generate Changelog Content # Étape pour générer le contenu du changelog
         id: generate_changelog
         run: |
-          echo "::group::Génération du Changelog"
-          git log --pretty=format:"* %s (%cn)" > changelog.txt
-          cat changelog.txt
+          echo "::group::Generating Changelog"
+          CHANGELOG=$(git log --pretty=format:"* %s (%cn)")
+          echo "$CHANGELOG"
           echo "::endgroup::"
+          echo "::set-output name=changelog::$CHANGELOG"
 
-      - name: Stockage du Contenu du Changelog dans un Fichier d'État
-        run: echo CHANGELOG=$(cat changelog.txt) >> $GITHUB_STATE
-
-      - name: Création d'une Release Préliminaire
+      - name: Create Draft Release # Étape pour créer une release draft sur GitHub
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }} # Utilisation du nom du tag GitHub comme nom de la version
-          release_name: "Notes de Version pour ${{ github.ref }}" # Nom de la release
-          body: ${{ replace(fromJSON(getenv('GITHUB_STATE')).CHANGELOG, '\\n', '\n') }} # Insertion du changelog depuis le fichier d'état
-          draft: true # Création de la release en tant que version préliminaire
+          tag_name: ${{ github.ref }} # Utilise le nom du tag GitHub comme nom de la version
+          release_name: "Release Notes for ${{ github.ref }}" # Nom de la release
+          body: ${{ steps.generate_changelog.outputs.changelog }} # Corps de la release avec les notes de version
+          draft: true # Crée la release en tant que draft
