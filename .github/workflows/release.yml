@@ -30,6 +30,13 @@ jobs:
           echo "::endgroup::"
           echo "::set-output name=changelog_file::changelog.txt"
 
+      - name: Generate Changelog Test
+        run: |
+          changelog_file="${{ steps.generate_changelog.outputs.changelog_file }}"
+          echo "Length of changelog file: $(wc -l < $changelog_file)"
+          echo "Changelog content from file:"
+          cat $changelog_file
+
       - name: Display Changelog Content Debug
         run: |
           cat ${{ steps.generate_changelog.outputs.changelog_file }}
