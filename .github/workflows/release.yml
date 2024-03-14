@@ -27,13 +27,13 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          body=$(cat changelog.txt)
+          echo "tag_name=${{ github.ref }}" >> $GITHUB_ENV
+          echo "release_name=Release Notes for ${{ github.ref }}" >> $GITHUB_ENV
+          echo "body=$body" >> $GITHUB_ENV
         with:
-          tag_name: ${{ github.ref }}
-          release_name: "Release Notes for ${{ github.ref }}"
-          body: |
-            $(< changelog.txt)
           draft: true
-        
 
       - name: Create Draft Release
         uses: actions/create-release@v1
