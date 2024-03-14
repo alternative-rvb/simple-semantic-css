@@ -25,24 +25,14 @@ jobs:
         id: generate_changelog
         run: |
           echo "::group::Generating Changelog"
-          CHANGELOG=$(git show --pretty=format:"* %s (%cn)")
-          echo "$CHANGELOG"
+          git log --pretty=format:"* %s (%cn)" > changelog.txt
+          cat changelog.txt
           echo "::endgroup::"
-          echo "::set-output name=changelog::$CHANGELOG"
-
-      - name: Generate Changelog Test
-        run: |
-          changelog="${{ steps.generate_changelog.outputs.changelog }}"
-          echo "Length of changelog: ${#changelog}"
-          echo "Changelog content: |"
-          echo "$changelog"
+          echo "::set-output name=changelog_file::changelog.txt"
 
       - name: Display Changelog Content Debug
         run: |
-          changelog="${{ steps.generate_changelog.outputs.changelog }}"
-          echo "Length of changelog: ${#changelog}"
-          echo "Changelog content: |"
-          echo "$changelog"
+          cat ${{ steps.generate_changelog.outputs.changelog_file }}
       
 
       - name: Create Draft Release
@@ -52,5 +42,6 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: "Release Notes for ${{ github.ref }}"
-          body: ${{ steps.generate_changelog.outputs.changelog }}
+          body: |
+            $(cat ${{ steps.generate_changelog.outputs.changelog_file }})
           draft: true
