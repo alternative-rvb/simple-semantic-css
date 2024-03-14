@@ -1,41 +1,43 @@
-name: Generate Release Notes and Create Draft Release
+# /.github/workflows/release.yml
+
+name: Generate Release Notes and Create Draft Release # Nom du workflow
 
 on:
   push:
     tags:
-      - "*"
+      - "*" # Déclenche le workflow à chaque fois qu'un tag est poussé sur le dépôt
 
 jobs:
   generate-release-notes:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Utilise Ubuntu comme système d'exécution
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout Repository # Étape pour cloner le dépôt
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # Récupère tout l'historique du dépôt pour obtenir tous les commits
 
-      - name: Get Latest Commit Info
+      - name: Get Latest Commit Info # Étape pour obtenir les informations sur le dernier commit
         id: latest_commit
         run: |
-          echo "commit_hash=$(git log -1 --format='%H')" >> $GITHUB_STATE
-          echo "commit_message=$(git log -1 --format='%s')" >> $GITHUB_STATE
+          echo "::set-output name=commit_hash::$(git log -1 --format='%H')" 
+          echo "::set-output name=commit_message::$(git log -1 --format='%s')"
 
-      - name: Generate Changelog Content
+      - name: Generate Changelog Content # Étape pour générer le contenu du changelog
         id: generate_changelog
         run: |
           echo "::group::Generating Changelog"
           CHANGELOG=$(git log --pretty=format:"* %s (%cn)")
           echo "$CHANGELOG"
           echo "::endgroup::"
-          echo "changelog=$CHANGELOG" >> $GITHUB_OUTPUT
+          echo "::set-output name=changelog::$CHANGELOG"
 
-      - name: Create Draft Release
+      - name: Create Draft Release # Étape pour créer une release draft sur GitHub
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: "Release Notes for ${{ github.ref }}"
-          body: ${{ steps.generate_changelog.outputs.changelog }}
-          draft: true
+          tag_name: ${{ github.ref }} # Utilise le nom du tag GitHub comme nom de la version
+          release_name: "Release Notes for ${{ github.ref }}" # Nom de la release
+          body: ${{ steps.generate_changelog.outputs.changelog }} # Corps de la release avec les notes de version
+          draft: true # Crée la release en tant que draft
