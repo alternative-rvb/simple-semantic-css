@@ -29,15 +29,6 @@ jobs:
           echo "::endgroup::"
           echo "::set-output name=changelog_file::changelog.txt"
 
-      - name: Extract Changelog Content
-        id: extract_changelog
-        run: |
-          changelog_content=""
-          while IFS= read -r line; do
-            changelog_content="$changelog_content$line\n"
-          done < ${{ steps.generate_changelog.outputs.changelog_file }}
-          echo "::set-output name=changelog_content::$changelog_content"
-
       - name: Create Draft Release
         uses: actions/create-release@v1
         env:
@@ -46,5 +37,5 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: "Release Notes for ${{ github.ref }}"
           body: |
-            ${{ steps.extract_changelog.outputs.changelog_content }}
+            $(cat ${{ steps.generate_changelog.outputs.changelog_file }})
           draft: true
