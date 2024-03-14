@@ -21,16 +21,16 @@ jobs:
           echo "::set-output name=commit_hash::$(git log -1 --format='%H')" 
           echo "::set-output name=commit_message::$(git log -1 --format='%s')"
 
-      - name: Generate Changelog Content
+      - name: Generate Changelog Content Debug
         id: generate_changelog
         run: |
           echo "::group::Generating Changelog"
-          git log --pretty=format:"* %s (%cn)" > changelog.txt
+          git log --pretty=format:"* %s (%cn)" $(git describe --abbrev=0 --tags $(git describe --abbrev=0 --tags ${{ github.event.before }})..${{ github.ref }}) > changelog.txt
           cat changelog.txt
           echo "::endgroup::"
           echo "::set-output name=changelog_file::changelog.txt"
 
-      - name: Generate Changelog Test
+      - name: Generate Changelog Test Debug
         run: |
           changelog_file="${{ steps.generate_changelog.outputs.changelog_file }}"
           echo "Length of changelog file: $(wc -l < $changelog_file)"
