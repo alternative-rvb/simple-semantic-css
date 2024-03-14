@@ -32,19 +32,11 @@ jobs:
       - name: Extract Changelog Content
         id: extract_changelog
         run: |
-          changelog_content=$(paste -sd "\n" changelog.txt)
+          changelog_content=""
+          while IFS= read -r line; do
+            changelog_content="$changelog_content$line\n"
+          done < ${{ steps.generate_changelog.outputs.changelog_file }}
           echo "::set-output name=changelog_content::$changelog_content"
-
-      - name: Generate Changelog Test Debug
-        run: |
-          changelog_file="${{ steps.generate_changelog.outputs.changelog_file }}"
-          echo "Length of changelog file: $(wc -l < $changelog_file)"
-          echo "Changelog content from file:"
-          cat $changelog_file
-
-      - name: Display Changelog Content Debug
-        run: |
-          cat ${{ steps.generate_changelog.outputs.changelog_file }}
 
       - name: Create Draft Release
         uses: actions/create-release@v1
