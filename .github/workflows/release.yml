@@ -33,7 +33,9 @@ jobs:
           echo "::set-output name=changelog::$CHANGELOG"
 
       - name: Display Changelog Content
-        run: echo "${{ steps.generate_changelog.outputs.changelog }}"
+        run: |
+          changelog="${{ steps.generate_changelog.outputs.changelog }}"
+          echo "$changelog"
 
       - name: Create Draft Release # Étape pour créer une release draft sur GitHub
         uses: actions/create-release@v1
