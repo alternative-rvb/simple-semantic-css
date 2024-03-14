@@ -1,43 +1,47 @@
-name: Generate Release Notes and Create Draft Release
+# /.github/workflows/release.yml
+
+name: Génération des Notes de Version et Création d'une Release Préliminaire
 
 on:
   push:
     tags:
-      - '*'
+      - '*' # Déclenchement du workflow à chaque push d'un tag sur le dépôt
 
 jobs:
   generate-release-notes:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Exécution sur une instance Ubuntu
 
     steps:
-      - name: Checkout Repository
+      - name: Clonage du Dépôt
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # Récupération de l'historique complet du dépôt pour obtenir tous les commits
 
-      - name: Get Latest Commit Info
+      - name: Extraction des Informations du Dernier Commit
         id: latest_commit
         run: |
           commit_hash=$(git log -1 --format='%H')
           commit_message=$(git log -1 --format='%s')
-          echo "commit_hash=$commit_hash" >> $GITHUB_ENV
-          echo "commit_message=$commit_message" >> $GITHUB_ENV
+          echo "::set-output name=commit_hash::$commit_hash"
+          echo "::set-output name=commit_message::$commit_message"
 
-      - name: Generate Changelog Content
+      - name: Génération du Contenu du Changelog
         id: generate_changelog
         run: |
-          echo "::group::Generating Changelog"
+          echo "::group::Génération du Changelog"
           git log --pretty=format:"* %s (%cn)" > changelog.txt
           cat changelog.txt
           echo "::endgroup::"
 
-      - name: Create Draft Release
+      - name: Stockage du Contenu du Changelog dans un Fichier d'État
+        run: echo CHANGELOG=$(cat changelog.txt) >> $GITHUB_STATE
+
+      - name: Création d'une Release Préliminaire
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: "Release Notes for ${{ github.ref }}"
-          body: |
-            $(cat changelog.txt)
-          draft: true
+          tag_name: ${{ github.ref }} # Utilisation du nom du tag GitHub comme nom de la version
+          release_name: "Notes de Version pour ${{ github.ref }}" # Nom de la release
+          body: ${{ replace(fromJSON(getenv('GITHUB_STATE')).CHANGELOG, '\\n', '\n') }} # Insertion du changelog depuis le fichier d'état
+          draft: true # Création de la release en tant que version préliminaire
