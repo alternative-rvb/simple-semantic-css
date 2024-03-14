@@ -1,6 +1,6 @@
 # Simple Semantic CSS
 
-![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/alternative-rvb/Simple-Semantic-CSS?label=version) ![License](https://img.shields.io/badge/license-MIT-green.svg)
+<!-- ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/alternative-rvb/Simple-Semantic-CSS?label=version) ![License](https://img.shields.io/badge/license-MIT-green.svg) -->
 
 Simple Semantic CSS is a lightweight, from-scratch CSS framework designed to empower web developers with semantic HTML5 integrations, dark and light mode support, and responsive design capabilities. By focusing on semantic HTML tags and offering utility classes for Flexbox properties, Simple Semantic CSS facilitates the creation of responsive, efficient, and semantically rich web pages.
 
