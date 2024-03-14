@@ -23,13 +23,17 @@ jobs:
           echo "commit_hash=$commit_hash" >> $GITHUB_ENV
           echo "commit_message=$commit_message" >> $GITHUB_ENV
 
-      - name: Generate Changelog Content
-        id: generate_changelog
-        run: |
-          echo "::group::Generating Changelog"
-          git log --pretty=format:"* %s (%cn)" > changelog.txt
-          cat changelog.txt
-          echo "::endgroup::"
+      - name: Create Draft Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: "Release Notes for ${{ github.ref }}"
+          body: |
+            $(< changelog.txt)
+          draft: true
+        
 
       - name: Create Draft Release
         uses: actions/create-release@v1
