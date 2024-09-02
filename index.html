@@ -28,17 +28,11 @@
         box-shadow: 0 15px 15px rgba(0, 0, 0, 0.25);
         z-index: 1;
       }
-      .bg-custom {
-        background-color: var(--lighter-30);
-      }
-      .hero {
-        background-color: initial !important;
-      }
     </style>
   </head>
 
   <body>
-    <div class="d-flex fd-column g-1">
+    <div class="d-flex fd-column">
       <header class="p-1">
         <div class="mw-1320 m-auto">
           <nav class="d-flex wrap ai-c">
@@ -76,8 +70,8 @@
           </nav>
         </div>
       </header>
-      <main class="d-flex fd-column g-1">
-        <div class="">
+      <main class="d-flex fd-column">
+        <div class="bg-lighter-90">
           <section
             class="hero mw-1320 m-auto d-flex row-r wrap ai-c g-2 px-1 py-4"
           >
@@ -92,7 +86,7 @@
               />
             </div>
             <div class="f-m d-flex fd-column g-1">
-              <h1>SIMPLE <span class="color-magic">SEMANTIC</span> CSS</h1>
+              <h1>SIMPLE <span>SEMANTIC</span> CSS</h1>
               <p class="exerpt">
                 Simple Semantic CSS is a lightweight, from-scratch CSS framework
                 designed to empower web developers with semantic HTML5
@@ -109,8 +103,8 @@
             </div>
           </section>
         </div>
-        <div class="my-2 py-4">
-          <div id="features" class="bg-custom px-1 py-4">
+        <div>
+          <div id="features" class="px-1 py-4">
             <section class="mw-1320 m-auto">
               <h2>Features</h2>
               <ul>
@@ -143,7 +137,7 @@
             </section>
           </div>
           <!-- Integration Text -->
-          <div class="px-1 py-4">
+          <div class="px-1 py-4 bg-lighter-90">
             <section id="integration" class="mw-1320 m-auto">
               <h2>Integration</h2>
               <p>
@@ -151,7 +145,7 @@
                 stylesheets directly from GitHub via CDN.
               </p>
               <h3>CDN Link</h3>
-              <p class="bg-darker p-1">
+              <p class="bg-darker-60 p-1 text-light">
                 <em
                   >https://cdn.jsdelivr.net/gh/alternative-rvb/simple-semantic-css/css/v{version}/main.css</em
                 >
@@ -169,7 +163,7 @@
           </div>
 
           <!-- Assets Text -->
-          <div class="bg-custom px-1 py-4">
+          <div class="px-1 py-4">
             <section id="assets" class="mw-1320 m-auto">
               <h2>Assets</h2>
               <p>Simple Semantic CSS incorporates the following resources:</p>
@@ -187,7 +181,7 @@
           </div>
 
           <!-- About Author Text -->
-          <div class="px-1 py-4">
+          <div class="px-1 py-4 bg-lighter-90">
             <section id="about-author" class="mw-1320 m-auto">
               <h2>About the Author</h2>
               <p>Nicolas Malet</p>

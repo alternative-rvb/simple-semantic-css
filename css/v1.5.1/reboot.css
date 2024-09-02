@@ -12,8 +12,8 @@
         margin: 0;
         font-size: large;
         font-family: var(--body-font);
-        background-color: var(--light);
-        color: var(--dark);
+        background-color: var(--dark-mode);
+        color: var(--darker-90);
     }
 
     h1,
@@ -33,7 +33,7 @@
     h5,
     h6 {
         font-family: var(--title-font);
-        color: var(--dark);
+        color: var(--darker-60);
     }
 
     h1 {
@@ -63,13 +63,15 @@
 
     header,
     footer {
-        background-color: var(--lighter-60);
+        background-color: var(--dark);
+        color: var(--light);
     }
 
-    nav a {
+    header nav a {
         display: inline-block;
         text-decoration: none;
         padding: 1rem;
+        color: var(--light);
     }
 
     main {
