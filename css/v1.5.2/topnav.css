@@ -1,0 +1,25 @@
+/* CUSTOM CSS */
+
+.hamburger {
+    display: block;
+}
+
+.menu {
+    display: none;
+}
+
+.menu--open {
+    display: block;
+    position: absolute;
+}
+
+
+@media (min-width: 815px) {
+    .hamburger {
+        display: none;
+    }
+
+    .menu {
+        display: flex;
+    }
+}
