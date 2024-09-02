@@ -33,7 +33,7 @@
     h5,
     h6 {
         font-family: var(--title-font);
-        color: var(--darker-60);
+        color: var(--darker-90);
     }
 
     h1 {
@@ -92,7 +92,7 @@
         border-radius: 4px;
         border: none;
         background-color: var(--theme1);
-        color: var(--dark);
+        color: var(--light);
         font-weight: bold;
         cursor: pointer;
         transition: 300ms;
@@ -129,7 +129,7 @@
         border-left: none;
         border-right: none;
         border-bottom: 1px solid var(--darker-60);
-        background-color: var(--lighter-30);
+        background-color: var(--lighter-90);
         border-radius: 4px;
         color: var(--black);
         transition: box-shadow 0.3s ease;
@@ -145,7 +145,7 @@
         [type="reset"],
         [type="button"])::placeholder {
         font-style: italic;
-        color: var(--dark);
+        color: var(--darker-90);
         opacity: 0.75;
     }
 
