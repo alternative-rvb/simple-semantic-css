@@ -427,7 +427,6 @@
         background-color: var(--theme2);
     }
 
-    /* FIXME */
     .bg-light {
         background-color: var(--light);
     }
